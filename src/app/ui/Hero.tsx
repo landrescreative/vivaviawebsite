@@ -1,38 +1,94 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState, useRef } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { FaSearch } from "react-icons/fa";
 
 export default function Hero() {
+  const [fromDropdown, setFromDropdown] = useState(false);
+  const [toDropdown, setToDropdown] = useState(false);
+
   return (
-    <div className="flex flex-col w-full min-h-[88vh] justify-center items-start relative">
-      <div className="main-text px-20">
-        <h2 className="text-xl">Descubre</h2>
-        <h1 className="font-semibold text-2xl mb-2">
+    <div className="flex flex-col w-full min-h-[100vh] justify-center items-center md:items-start relative overflow-hidden">
+      <div className="main-text flex flex-col justify-center md:items-start items-center px-20">
+        <h2 className="text-2xl text-center md:text-start text-white">
+          Descubre
+        </h2>
+        <h1 className="font-semibold text-4xl mb-2 text-center md:text-start text-white">
           NUEVAS EXPERIENCIAS DE VIAJE
         </h1>
-        <button className="px-10 py-2 bg-white text-black font-medium ">
+        <button className="px-12 py-3 w-fit bg-white text-black font-medium hover:scale-110 hover:bg-primary hover:text-white transition-all duration-300 ">
           VER MAS
         </button>
       </div>
-      <div className="absolute bottom-3 left-3 flex flex-col  ">
+      <div className="absolute bottom-3 left-3 flex flex-col">
         {/* <h1>¿Cúal será tu próxima aventura?</h1> */}
-        <div className="tarjeta flex gap-3 bg-white/35 p-4 rounded-lg backdrop-blur-md">
-          <div className="bg-gray-300 text-black py-4 px-5 rounded-lg relative">
+        <div className="tarjeta flex gap-3 bg-white/60 p-6 rounded-lg backdrop-blur-md">
+          <div
+            className="bg-white text-black py-4 px-8 rounded-lg relative absolute cursor-pointer"
+            onClick={() => setFromDropdown(!fromDropdown)}
+          >
             <span className="text-sm text-gray-600">Desde</span>
             <h1>Ciudad de México, México</h1>
             <div className="p-[5px] rounded-full bg-primary z-10 text-white absolute -right-[18px] top-1/3">
               <IoIosArrowForward className=""></IoIosArrowForward>
             </div>
+            <div
+              className={`absolute mt-2 right-0 -top-60 w-full bg-white border border-gray-300 rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform ${
+                fromDropdown
+                  ? "opacity-100 translate-y-0"
+                  : "hidden opacity-0 -translate-y-5"
+              }`}
+            >
+              <ul className="text-black flex flex-col">
+                <li className="px-4 py-4 hover:bg-blue-100 cursor-pointer">
+                  Mexico
+                </li>
+                <li className="px-4 py-4 hover:bg-blue-100 cursor-pointer">
+                  Colombia
+                </li>
+                <li className="px-4 py-4 hover:bg-blue-100 cursor-pointer">
+                  Argentina
+                </li>
+                <li className="px-4 py-4 hover:bg-blue-100 cursor-pointer">
+                  Chile
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="bg-gray-300 text-black py-4 px-5 rounded-lg relative">
+          <div
+            className="bg-white text-black py-4 px-8 rounded-lg relative "
+            onClick={() => setToDropdown(!toDropdown)}
+          >
             <span className="text-sm text-gray-600">Hacia</span>
             <h1>Cancún, Quintana Roo</h1>
 
             <div className="p-[5px] rounded-full bg-primary z-10 text-white absolute -right-[18px] top-1/3">
               <IoIosArrowForward className=""></IoIosArrowForward>
             </div>
+            <div
+              className={`absolute mt-2 right-0 -top-60 w-full bg-white border border-gray-300 rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform ${
+                toDropdown
+                  ? "opacity-100 translate-y-0"
+                  : "hidden opacity-0 -translate-y-5"
+              }`}
+            >
+              <ul className="text-black flex flex-col">
+                <li className="px-4 py-4 hover:bg-blue-100 cursor-pointer">
+                  Mexico
+                </li>
+                <li className="px-4 py-4 hover:bg-blue-100 cursor-pointer">
+                  Colombia
+                </li>
+                <li className="px-4 py-4 hover:bg-blue-100 cursor-pointer">
+                  Argentina
+                </li>
+                <li className="px-4 py-4 hover:bg-blue-100 cursor-pointer">
+                  Chile
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="bg-gray-300 text-black py-4 px-5 rounded-lg">
+          <div className="bg-white text-black py-4 px-8 rounded-lg">
             <span className="text-sm text-gray-600">Fecha</span>
             <h1>12 / Julio / 2024</h1>
           </div>
@@ -41,8 +97,8 @@ export default function Hero() {
           </button>
         </div>
       </div>
-      <div className="w-screen fixed -z-10">
-        <video autoPlay loop muted className="w-screen top-14 right-0 ">
+      <div className="w-screen h-screen absolute -z-10 top-0 left-0">
+        <video autoPlay loop muted className="w-full h-full object-cover">
           <source src="/paisaje.mp4" type="video/mp4" />
         </video>
       </div>
