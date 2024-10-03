@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 
 // Icons
@@ -44,8 +44,9 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full fixed z-50 bg-white text-black">
+    <div className="w-full fixed z-50  text-black">
       {/* Barra superior con dropdowns */}
+
       <div className=" py-1 justify-evenly items-center  bg-primary text-white hidden md:flex">
         <h1 className="flex justify-center items-center gap-1">
           <IoIosCall /> 800 55592283
@@ -54,6 +55,7 @@ const Navbar: React.FC = () => {
         <h1 className="">PREGUNTAS FRECUENTES</h1>
 
         {/* Dropdown para MXN */}
+
         <div className="relative" ref={currencyDropdownRef}>
           <button
             onClick={() => setShowCurrencyDropdown(!showCurrencyDropdown)}
@@ -61,7 +63,13 @@ const Navbar: React.FC = () => {
           >
             <FaDollarSign /> MXN <IoIosArrowDown />
           </button>
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: -5 }}
+            animate={{
+              opacity: showCurrencyDropdown ? 1 : 0,
+              y: showCurrencyDropdown ? 0 : -5,
+            }}
+            exit={{ opacity: 0, y: -5 }}
             className={`absolute mt-2 right-0 w-32 bg-white border border-gray-300 rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform ${
               showCurrencyDropdown
                 ? "opacity-100 translate-y-0"
@@ -69,17 +77,20 @@ const Navbar: React.FC = () => {
             }`}
           >
             <ul className="text-black">
-              <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">
+              <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer flex justify-center items-center gap-3">
+                <img src="/flagusa.webp" className="w-5 h-full"></img>
                 USD
               </li>
-              <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">
+              <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer flex justify-center items-center gap-3">
+                <img src="/Flag_of_Mexico.png" className="w-5 h-full"></img>
                 MXN
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
         {/* Dropdown para ESPAÑOL */}
+
         <div className="relative" ref={languageDropdownRef}>
           <button
             onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
@@ -87,7 +98,13 @@ const Navbar: React.FC = () => {
           >
             <GrLanguage /> ESPAÑOL <IoIosArrowDown />
           </button>
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: -5 }}
+            animate={{
+              opacity: showLanguageDropdown ? 1 : 0,
+              y: showLanguageDropdown ? 0 : -5,
+            }}
+            exit={{ opacity: 0, y: -5 }}
             className={`absolute mt-2 right-0 w-32 bg-white border border-gray-300 shadow-lg transition-transform duration-300 ease-in-out transform ${
               showLanguageDropdown
                 ? "opacity-100 translate-y-0"
@@ -103,12 +120,13 @@ const Navbar: React.FC = () => {
                 <img src="/flagusa.webp" className="w-5 h-full"></img> ENGLISH
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Barra principal de navegación */}
-      <div className="flex w-full py-2 justify-evenly items-center">
+
+      <div className="flex w-full py-3 justify-evenly items-center bg-white">
         {/* Logo */}
         <Link
           href={"/"}
@@ -127,6 +145,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Links de navegación */}
+
         <div className="flex justify-around gap-5 text-gray-500">
           <Link href={"/"} className="text-primary hidden md:block">
             INICIO
@@ -158,49 +177,129 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Botones de acción */}
-        <div className=" gap-3 hidden md:flex ">
-          <button className="text-primary hover:scale-105 transition-transform ">
+
+        <div className="flex justify-center items-center gap-3 hidden md:flex ">
+          <Link
+            href={"/login"}
+            className="text-primary hover:scale-105 transition-transform "
+          >
             Iniciar Sesión
-          </button>
+          </Link>
           <button className="py-3 px-5 bg-primary text-center text-white rounded-full hover:scale-105 transition-transform hover:shadow-lg ">
             REGISTRO
           </button>
         </div>
       </div>
 
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ x: "-100%" }}
-          animate={{ x: "0%" }}
-          exit={{ x: "-100%" }}
-          className="flex flex-col md:hidden gap-8 px-5 py-9 text-gray-500"
-        >
-          <Link href={"/"} onClick={() => setIsMobileMenuOpen(false)}>
-            INICIO
-          </Link>
-          <Link href={"/destinos"} onClick={() => setIsMobileMenuOpen(false)}>
-            DESTINOS Y PAQUETES
-          </Link>
-          <Link href={"/blog"} onClick={() => setIsMobileMenuOpen(false)}>
-            BLOG
-          </Link>
-          <Link href={"/nosotros"} onClick={() => setIsMobileMenuOpen(false)}>
-            NOSOTROS
-          </Link>
-          <Link href={"/contacto"} onClick={() => setIsMobileMenuOpen(false)}>
-            CONTACTO
-          </Link>
-          {/* Botones de acción en el menú móvil */}
-          <div className="flex flex-col gap-3 mt-3">
-            <button className="text-primary hover:scale-105 transition-transform">
-              Iniciar Sesión
-            </button>
-            <button className="py-3 px-5 bg-primary text-center text-white rounded-full hover:scale-105 transition-transform hover:shadow-lg">
-              REGISTRO
-            </button>
-          </div>
-        </motion.div>
-      )}
+      {/* Barra en Mobile */}
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: "0%" }}
+            exit={{ x: "100%" }}
+            className="flex flex-col text-end  md:hidden gap-8 px-5 py-9 bg-white text-gray-500"
+          >
+            <Link href={"/"} onClick={() => setIsMobileMenuOpen(false)}>
+              INICIO
+            </Link>
+            <Link href={"/destinos"} onClick={() => setIsMobileMenuOpen(false)}>
+              DESTINOS Y PAQUETES
+            </Link>
+            <Link href={"/blog"} onClick={() => setIsMobileMenuOpen(false)}>
+              BLOG
+            </Link>
+            <Link href={"/nosotros"} onClick={() => setIsMobileMenuOpen(false)}>
+              NOSOTROS
+            </Link>
+            <Link href={"/contacto"} onClick={() => setIsMobileMenuOpen(false)}>
+              CONTACTO
+            </Link>
+
+            {/* Botones de acción en el menú móvil */}
+
+            <div className="flex flex-col gap-3 mt-3">
+              <button className="text-primary hover:scale-105 transition-transform">
+                Iniciar Sesión
+              </button>
+              <button className="py-3 px-5 bg-primary text-center text-white rounded-full hover:scale-105 transition-transform hover:shadow-lg">
+                REGISTRO
+              </button>
+            </div>
+
+            {/* Barra en Mobile Dropdowns */}
+
+            <div className="flex items-center justify-around">
+              <div className="relative" ref={currencyDropdownRef}>
+                <button
+                  onClick={() => setShowCurrencyDropdown(!showCurrencyDropdown)}
+                  className="flex items-center gap-1"
+                >
+                  <FaDollarSign /> MXN <IoIosArrowDown />
+                </button>
+                <motion.div
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{
+                    opacity: showCurrencyDropdown ? 1 : 0,
+                    y: showCurrencyDropdown ? 0 : -5,
+                  }}
+                  exit={{ opacity: 0, y: -5 }}
+                  className={`absolute mt-2 right-0 w-32 bg-white border border-gray-300 rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform ${
+                    showCurrencyDropdown
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 hidden -translate-y-5"
+                  }`}
+                >
+                  <ul className="text-black">
+                    <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">
+                      USD
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">
+                      MXN
+                    </li>
+                  </ul>
+                </motion.div>
+              </div>
+              <div className="relative" ref={languageDropdownRef}>
+                <button
+                  onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
+                  className="flex items-center gap-1"
+                >
+                  <GrLanguage /> ESPAÑOL <IoIosArrowDown />
+                </button>
+                <motion.div
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{
+                    opacity: showLanguageDropdown ? 1 : 0,
+                    y: showLanguageDropdown ? 0 : -5,
+                  }}
+                  exit={{ opacity: 0, y: -5 }}
+                  className={`absolute mt-2 right-0 w-32 bg-white border border-gray-300 shadow-lg transition-transform duration-300 ease-in-out transform ${
+                    showLanguageDropdown
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 hidden translate-y-2"
+                  }`}
+                >
+                  <ul className="text-black">
+                    <li className="flex justify-center items-center gap-1 px-4 py-2 hover:bg-gray-200 cursor-pointer">
+                      <img
+                        src="/Flag_of_Mexico.png"
+                        className="w-5 h-full"
+                      ></img>{" "}
+                      ESPAÑOL
+                    </li>
+                    <li className="flex justify-center items-center gap-1 px-4 py-2 hover:bg-gray-200 cursor-pointer">
+                      <img src="/flagusa.webp" className="w-5 h-full"></img>{" "}
+                      ENGLISH
+                    </li>
+                  </ul>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
