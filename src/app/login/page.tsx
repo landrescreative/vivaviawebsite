@@ -34,28 +34,29 @@ export default function Login() {
   };
 
   return (
-    <div className="max-h-screen grid grid-cols-4  bg-gray-100">
-      <div className="hidden md:block w-full col-start-1 col-end-3">
+    <div className=" grid grid-cols-4  bg-gray-100">
+      <div className="hidden md:block w-full max-h-screen col-start-1 col-end-3 overflow-hidden">
         <img
           src="/paisaje.jpg" // Puedes reemplazar esta URL con la imagen que desees
           alt="Imagen de bienvenida"
-          className="w-full h-full object-cover"
+          className="w-full object-cover object-center"
         />
       </div>
-      <div className="w-ful1 flex flex-col justify-center    p-8 space-y-6 bg-white rounded shadow-md col-start-1 col-end-6  md:col-start-3 md:col-end-5">
-        <div className="flex justify-between">
+      <div className="w-ful1 h-screen flex flex-col justify-center p-8 space-y-6 bg-white rounded shadow-md col-start-1 col-end-6  md:col-start-3 md:col-end-5">
+        <div className=" hidden md:flex justify-between">
           <h1 className="text-primary text-2xl">VIVAVIA</h1>
           <h1>ES</h1>
         </div>
         {/* Texto de bienvenida actualizado */}
-        <h2 className="text-3xl font-bold text-center text-gray-700">
-          ¡Bienvenido de regreso!
-        </h2>
-        <p className="text-center text-gray-600">
-          Es bueno tenerte de regreso.
-        </p>
-        {/* También puedes cambiar el texto a algo como: "Nos alegra verte de nuevo." */}
-
+        <div className="">
+          <h2 className="text-3xl font-normal text-center text-primary m-0 ">
+            Iniciar sesión
+          </h2>
+          <p className="text-center text-gray-600 m-0">
+            ¡Bienvenido de regreso!
+          </p>
+          {/* También puedes cambiar el texto a algo como: "Nos alegra verte de nuevo." */}
+        </div>
         <form onSubmit={handleSubmit} className="space-y-6 mt-4">
           <div>
             <label
@@ -71,7 +72,7 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-5 py-4  bg-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="correo@ejemplo.com"
             />
           </div>
@@ -90,7 +91,7 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-5 py-4  bg-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="••••••••"
             />
           </div>
@@ -102,7 +103,7 @@ export default function Login() {
           <div>
             <button
               type="submit"
-              className="w-full px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="w-full px-4 py-4 uppercase text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Iniciar Sesión
             </button>

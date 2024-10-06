@@ -219,10 +219,13 @@ const Navbar: React.FC = () => {
 
             {/* Botones de acción en el menú móvil */}
 
-            <div className="flex flex-col gap-3 mt-3">
-              <button className="text-primary hover:scale-105 transition-transform">
+            <div className="flex flex-col gap-3 mt-3 justify-center items-center">
+              <Link
+                href={"/login"}
+                className="text-primary hover:scale-105 transition-transform"
+              >
                 Iniciar Sesión
-              </button>
+              </Link>
               <button className="py-3 px-5 bg-primary text-center text-white rounded-full hover:scale-105 transition-transform hover:shadow-lg">
                 REGISTRO
               </button>
