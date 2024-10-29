@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "inicio": "Home",
+    "paquetes": "Destinations",
+    "blog": "Blog",
+    "nosotros": "About us",
+    "contacto": "Contact",
+    "isesion": "Sign in",
+    "registro": "Sign up",
+    "soporte": "SUPPORT AND HELP",
+    "preguntas": "FREQUENTLY ASKED QUESTIONS"
+  },
+  "hero": {
+    "title": "DISCOVER",
+    "subtitle": "NEW TRAVEL EXPERIENCES",
+    "button": "SEE MORE"
+  }
+}

@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+body {
+  background-color: #f2f2f2;
+}
+
+.card-icon {
+  transition: all 0.3s;
+}
+
+.card-blog:hover .card-icon {
+  color: white;
+  background-color: #3049bf;
+}
+
+.card-img {
+  transition: all 0.3s;
+}
+
+.card-blog:hover .card-img {
+  transform: scale(1.2);
+}

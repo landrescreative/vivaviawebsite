@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { FaSearch } from "react-icons/fa";
 
-export default function Hero() {
+export default function Hero({ title, subtitle, button }) {
   const [fromDropdown, setFromDropdown] = useState(false);
   const [toDropdown, setToDropdown] = useState(false);
 
@@ -11,13 +11,13 @@ export default function Hero() {
     <div className="flex flex-col w-full min-h-[100vh] justify-center items-center md:items-start relative overflow-hidden">
       <div className="main-text flex flex-col justify-center md:items-start items-center px-20">
         <h2 className="text-2xl text-center md:text-start text-white">
-          Descubre
+          {title}
         </h2>
         <h1 className="font-semibold text-4xl mb-2 text-center md:text-start text-white">
-          NUEVAS EXPERIENCIAS DE VIAJE
+          {subtitle}
         </h1>
         <button className="px-12 py-3 w-fit bg-white text-black font-medium hover:scale-110 hover:bg-primary hover:text-white transition-all duration-300 ">
-          VER MAS
+          {button}
         </button>
       </div>
       <div className="absolute bottom-3 left-3 flex flex-col">

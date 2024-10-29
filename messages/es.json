@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "inicio": "Inicio",
+    "paquetes": "DESTINOS Y PAQUETES",
+    "blog": "Blog",
+    "nosotros": "Nosotros",
+    "contacto": "Contacto",
+    "isesion": "Iniciar sesión",
+    "registro": "Registrarse",
+    "soporte": "SOPORTE Y AYUDA",
+    "preguntas": "PREGUNTAS FRECUENTES"
+  },
+  "hero": {
+    "title": "DESCUBRE",
+    "subtitle": "NUEVAS EXPERIENCIAS DE VIAJE",
+    "button": "VER MAS"
+  }
+}

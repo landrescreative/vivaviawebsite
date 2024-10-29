@@ -2,13 +2,24 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // Icons
 import { IoIosArrowDown, IoIosCall, IoMdMenu, IoMdClose } from "react-icons/io";
 import { FaDollarSign } from "react-icons/fa6";
 import { GrLanguage } from "react-icons/gr";
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC = ({
+  inicio,
+  paquetes,
+  blog,
+  nosotros,
+  contacto,
+  isesion,
+  registro,
+  soporte,
+  preguntas,
+}) => {
   const [showCurrencyDropdown, setShowCurrencyDropdown] = useState(false);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -16,6 +27,9 @@ const Navbar: React.FC = () => {
   // Refs para los dropdowns
   const currencyDropdownRef = useRef<HTMLDivElement>(null);
   const languageDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Router for locale
+  const router = useRouter();
 
   // Maneja clics fuera del dropdown
   useEffect(() => {
@@ -51,8 +65,8 @@ const Navbar: React.FC = () => {
         <h1 className="flex justify-center items-center gap-1">
           <IoIosCall /> 800 55592283
         </h1>
-        <h1 className="">SOPORTE Y AYUDA</h1>
-        <h1 className="">PREGUNTAS FRECUENTES</h1>
+        <h1 className="">{soporte}</h1>
+        <h1 className="">{preguntas}</h1>
 
         {/* Dropdown para MXN */}
 
@@ -112,13 +126,21 @@ const Navbar: React.FC = () => {
             }`}
           >
             <ul className="text-black">
-              <li className="flex justify-center items-center gap-1 px-4 py-2 hover:bg-gray-200 cursor-pointer">
+              <Link
+                href="/es"
+                locale="es"
+                className="flex justify-center items-center gap-1 px-4 py-2 hover:bg-gray-200 cursor-pointer"
+              >
                 <img src="/Flag_of_Mexico.png" className="w-5 h-full"></img>{" "}
                 ESPAÑOL
-              </li>
-              <li className="flex justify-center items-center gap-1 px-4 py-2 hover:bg-gray-200 cursor-pointer">
+              </Link>
+              <Link
+                href="/en"
+                locale="en"
+                className="flex justify-center items-center gap-1 px-4 py-2 hover:bg-gray-200 cursor-pointer"
+              >
                 <img src="/flagusa.webp" className="w-5 h-full"></img> ENGLISH
-              </li>
+              </Link>
             </ul>
           </motion.div>
         </div>
@@ -147,32 +169,32 @@ const Navbar: React.FC = () => {
         {/* Links de navegación */}
 
         <div className="flex justify-around gap-5 text-gray-500">
-          <Link href={"/"} className="text-primary hidden md:block">
-            INICIO
+          <Link href={"/"} className="text-primary uppercase hidden md:block">
+            {inicio}
           </Link>
           <Link
             href={"/destinos"}
-            className="hover:text-primary transition-colors duration-300 hidden md:block"
+            className="hover:text-primary uppercase transition-colors duration-300 hidden md:block"
           >
-            DESTINOS Y PAQUETES
+            {paquetes}
           </Link>
           <Link
             href={"/blog"}
-            className="hover:text-primary transition-colors duration-300 hidden md:block"
+            className="hover:text-primary uppercase transition-colors duration-300 hidden md:block"
           >
-            BLOG
+            {blog}
           </Link>
           <Link
             href={"/nosotros"}
-            className="hover:text-primary transition-colors duration-300 hidden md:block"
+            className="hover:text-primary uppercase transition-colors duration-300 hidden md:block"
           >
-            NOSOTROS
+            {nosotros}
           </Link>
           <Link
             href={"/contacto"}
-            className="hover:text-primary transition-colors duration-300 hidden md:block"
+            className="hover:text-primary uppercase transition-colors duration-300 hidden md:block"
           >
-            CONTACTO
+            {contacto}
           </Link>
         </div>
 
@@ -183,10 +205,10 @@ const Navbar: React.FC = () => {
             href={"/login"}
             className="text-primary hover:scale-105 transition-transform "
           >
-            Iniciar Sesión
+            {isesion}
           </Link>
           <button className="py-3 px-5 bg-primary text-center text-white rounded-full hover:scale-105 transition-transform hover:shadow-lg ">
-            REGISTRO
+            {registro}
           </button>
         </div>
       </div>
@@ -201,35 +223,58 @@ const Navbar: React.FC = () => {
             exit={{ x: "100%" }}
             className="flex flex-col text-end  md:hidden gap-8 px-5 py-9 bg-white text-gray-500"
           >
-            <Link href={"/"} onClick={() => setIsMobileMenuOpen(false)}>
-              INICIO
-            </Link>
-            <Link href={"/destinos"} onClick={() => setIsMobileMenuOpen(false)}>
-              DESTINOS Y PAQUETES
-            </Link>
-            <Link href={"/blog"} onClick={() => setIsMobileMenuOpen(false)}>
-              BLOG
-            </Link>
-            <Link href={"/nosotros"} onClick={() => setIsMobileMenuOpen(false)}>
-              NOSOTROS
-            </Link>
-            <Link href={"/contacto"} onClick={() => setIsMobileMenuOpen(false)}>
-              CONTACTO
-            </Link>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 50 }}
+              transition={{ duration: 1 }}
+              className="flex flex-col gap-5"
+            >
+              <Link href={"/"} onClick={() => setIsMobileMenuOpen(false)}>
+                {inicio}
+              </Link>
+              <Link
+                href={"/destinos"}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {paquetes}
+              </Link>
+              <Link href={"/blog"} onClick={() => setIsMobileMenuOpen(false)}>
+                {blog}
+              </Link>
+              <Link
+                href={"/nosotros"}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {nosotros}
+              </Link>
+              <Link
+                href={"/contacto"}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {contacto}
+              </Link>
+            </motion.div>
 
             {/* Botones de acción en el menú móvil */}
 
-            <div className="flex flex-col gap-3 mt-3 justify-center items-center">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              className="flex flex-col gap-3 mt-3 justify-center items-center"
+            >
               <Link
                 href={"/login"}
                 className="text-primary hover:scale-105 transition-transform"
               >
-                Iniciar Sesión
+                {isesion}
               </Link>
               <button className="py-3 px-5 bg-primary text-center text-white rounded-full hover:scale-105 transition-transform hover:shadow-lg">
-                REGISTRO
+                {registro}
               </button>
-            </div>
+            </motion.div>
 
             {/* Barra en Mobile Dropdowns */}
 
