@@ -58,7 +58,7 @@ const Navbar: React.FC = ({
   }, []);
 
   return (
-    <div className="w-full fixed z-50  text-black">
+    <div className="w-full fixed z-50 top-0  text-black">
       {/* Barra superior con dropdowns */}
 
       <div className=" py-1 justify-evenly items-center  bg-primary text-white hidden md:flex">

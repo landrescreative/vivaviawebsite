@@ -1,3 +1,4 @@
+import ReviewsSection from "@/app/ui/ReviewSection";
 import Image from "next/image";
 import React from "react";
 import { IoMdArrowDown } from "react-icons/io";
@@ -112,6 +113,7 @@ const Page: React.FC = () => {
           </ul>
         </div>
       </div>
+      <ReviewsSection />
     </div>
   );
 };
