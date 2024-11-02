@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 export default function Login() {
@@ -10,18 +11,33 @@ export default function Login() {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
 
+  // Inicializa el router dentro de useEffect
+  const router = useRouter();
+
   // Usuario de prueba
   const testUser = {
     email: "usuario@prueba.com",
     password: "123456",
   };
 
+  // Verificar si el usuario ya está autenticado al cargar la página
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isLoggedIn = localStorage.getItem("isLoggedIn");
+      if (isLoggedIn === "true") {
+        router.push("/"); // Redirigir si el usuario ya está autenticado
+      }
+    }
+  }, [router]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Verificar si las credenciales coinciden con el usuario de prueba
     if (email === testUser.email && password === testUser.password) {
+      localStorage.setItem("isLoggedIn", "true"); // Guardar estado de autenticación
       setShowSuccessModal(true); // Mostrar modal de éxito
       setErrorMessage(""); // Limpiar mensaje de error
+      setTimeout(() => router.push("/"), 1000); // Redirigir después de 1 segundo
     } else {
       setErrorMessage("Correo o contraseña incorrectos");
       setShowErrorModal(true); // Mostrar modal de error
@@ -47,7 +63,6 @@ export default function Login() {
           <h1 className="text-primary text-2xl">VIVAVIA</h1>
           <h1>ES</h1>
         </div>
-        {/* Texto de bienvenida actualizado */}
         <div className="">
           <h2 className="text-3xl font-normal text-center text-primary m-0 ">
             Iniciar sesión
@@ -55,7 +70,6 @@ export default function Login() {
           <p className="text-center text-gray-600 m-0">
             ¡Bienvenido de regreso!
           </p>
-          {/* También puedes cambiar el texto a algo como: "Nos alegra verte de nuevo." */}
         </div>
         <form onSubmit={handleSubmit} className="space-y-6 mt-4">
           <div>
@@ -76,7 +90,6 @@ export default function Login() {
               placeholder="correo@ejemplo.com"
             />
           </div>
-
           <div>
             <label
               htmlFor="password"
@@ -110,7 +123,6 @@ export default function Login() {
           </div>
         </form>
 
-        {/* Enlaces para recuperación de contraseña y registro */}
         <div className="mt-4 flex justify-between text-sm text-indigo-600">
           <a href="/forgot-password" className="hover:underline">
             Recuperar contraseña
@@ -120,7 +132,6 @@ export default function Login() {
           </a>
         </div>
 
-        {/* Mostrar las credenciales del usuario de prueba */}
         <div className="mt-6 text-sm text-gray-500">
           <p>Usuario de prueba:</p>
           <p>
@@ -132,7 +143,6 @@ export default function Login() {
         </div>
       </div>
 
-      {/* Modal de éxito */}
       {showSuccessModal && (
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -157,7 +167,6 @@ export default function Login() {
         </motion.div>
       )}
 
-      {/* Modal de error */}
       {showErrorModal && (
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}

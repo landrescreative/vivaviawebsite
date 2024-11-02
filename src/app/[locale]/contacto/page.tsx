@@ -8,7 +8,7 @@ import { FaFlag } from "react-icons/fa";
 const Page: React.FC = () => {
   return (
     <div className="mt-36 container mx-auto">
-      <div className="hero min-h-screen flex justify-center items-center flex-col">
+      <div className="hero min-h-[80vh] flex justify-center items-center flex-col">
         <h1 className="text-center text-4xl">
           Servicio a <strong className="text-primary">Cliente</strong>
         </h1>
