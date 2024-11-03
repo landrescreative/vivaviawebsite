@@ -1,0 +1,123 @@
+{
+  "dashboardData": {
+    "balanceMensual": 5000,
+    "balanceGeneral": 50000,
+    "ultimoViaje": {
+      "destino": "Cancún, México",
+      "fecha": "2023-10-20"
+    },
+    "paquetesActivos": 15,
+    "paquetesEnPromocion": 5,
+    "paquetesVendidosMes": 12
+  },
+  "transacciones": [
+    {
+      "id": 1,
+      "icono": "plane",
+      "viaje": "Cancún, México",
+      "fechaViaje": "2023-10-20",
+      "formaPago": "Transferencia",
+      "ultimosDigitosTarjeta": "1234",
+      "status": "Completado",
+      "monto": 500
+    },
+    {
+      "id": 2,
+      "icono": "plane",
+      "viaje": "Tulum, México",
+      "fechaViaje": "2023-10-15",
+      "formaPago": "Web",
+      "ultimosDigitosTarjeta": "5678",
+      "status": "Pendiente",
+      "monto": 300
+    },
+    {
+      "id": 3,
+      "icono": "plane",
+      "viaje": "Playa del Carmen, México",
+      "fechaViaje": "2023-10-10",
+      "formaPago": "Transferencia",
+      "ultimosDigitosTarjeta": "4321",
+      "status": "Cancelado",
+      "monto": 150
+    }
+  ],
+  "estadisticasBlogs": [
+    {
+      "id": 1,
+      "icono": "blog",
+      "titulo": "Guía de Viaje a Cancún",
+      "descripcion": "Descubre los mejores lugares y actividades en Cancún.",
+      "visitas": 1200
+    },
+    {
+      "id": 2,
+      "icono": "blog",
+      "titulo": "Top 10 Playas en Tulum",
+      "descripcion": "Una lista de las mejores playas para disfrutar en Tulum.",
+      "visitas": 980
+    },
+    {
+      "id": 3,
+      "icono": "blog",
+      "titulo": "Explorando Chichen Itza",
+      "descripcion": "Consejos para una visita memorable a las ruinas de Chichen Itza.",
+      "visitas": 800
+    },
+    {
+      "id": 4,
+      "icono": "blog",
+      "titulo": "Mejores Hoteles en Playa del Carmen",
+      "descripcion": "Guía de los mejores hoteles en Playa del Carmen.",
+      "visitas": 650
+    }
+  ],
+  "ticketsSoporte": [
+    {
+      "id": 1,
+      "icono": "support",
+      "asunto": "Problema con el pago",
+      "remitente": "Juan Pérez",
+      "mensaje": "No se ha procesado el pago de mi última reserva.",
+      "estatus": "Pendiente"
+    },
+    {
+      "id": 2,
+      "icono": "support",
+      "asunto": "Error en la página",
+      "remitente": "Maria García",
+      "mensaje": "La página de paquetes no carga correctamente.",
+      "estatus": "Resuelto"
+    }
+  ],
+  "notificaciones": [
+    {
+      "id": 1,
+      "message": "Nuevo paquete vendido.",
+      "type": "info",
+      "timestamp": "2023-10-10T12:30:00Z",
+      "isRead": false
+    },
+    {
+      "id": 2,
+      "message": "Nueva solicitud de soporte.",
+      "type": "warning",
+      "timestamp": "2023-10-10T14:45:00Z",
+      "isRead": false
+    },
+    {
+      "id": 3,
+      "message": "Paquete en promoción actualizado.",
+      "type": "info",
+      "timestamp": "2023-10-11T09:00:00Z",
+      "isRead": true
+    },
+    {
+      "id": 4,
+      "message": "Nueva entrada en el blog.",
+      "type": "info",
+      "timestamp": "2023-10-12T08:15:00Z",
+      "isRead": true
+    }
+  ]
+}

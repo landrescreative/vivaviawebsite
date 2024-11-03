@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import Navbar from "../ui/Navbar";
+import "@/app/[locale]/globals.css";
+import Navbar from "../../ui/Navbar";
 import { NextIntlClientProvider } from "next-intl";
 import { useTranslations } from "next-intl";
-import Footer from "../ui/Footer";
+import Footer from "../../ui/Footer";
 import { Montserrat } from "@next/font/google";
 
 export const metadata: Metadata = {
@@ -49,9 +49,19 @@ export default function LocaleLayout({
   return (
     <html lang={locale} className="">
       <body className={montserrat.className}>
-        <NextIntlClientProvider messages={{}}>
-          {children}
-        </NextIntlClientProvider>
+        <Navbar
+          inicio={t("navbar.inicio")}
+          paquetes={t("navbar.paquetes")}
+          blog={t("navbar.blog")}
+          nosotros={t("navbar.nosotros")}
+          contacto={t("navbar.contacto")}
+          isesion={t("navbar.isesion")}
+          registro={t("navbar.registro")}
+          soporte={t("navbar.soporte")}
+          preguntas={t("navbar.preguntas")}
+        />
+        {children}
+        <Footer></Footer>
       </body>
     </html>
   );
