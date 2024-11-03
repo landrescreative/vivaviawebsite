@@ -4,44 +4,66 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
+// Datos de prueba
+const USERS = [
+  {
+    id: "123",
+    email: "usuario@prueba.com",
+    password: "123456",
+    username: "Usuario de Prueba",
+    name: "Juan Pérez",
+    birthdate: "1990-01-01",
+    phone: "555-123-4567",
+  },
+  {
+    id: "124",
+    email: "landres@gmail.com",
+    password: "123456",
+  },
+];
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Inicializa el router dentro de useEffect
   const router = useRouter();
 
-  // Usuario de prueba
-  const testUser = {
-    email: "usuario@prueba.com",
-    password: "123456",
-  };
-
-  // Verificar si el usuario ya está autenticado al cargar la página
+  // Redirección si ya está autenticado
   useEffect(() => {
     if (typeof window !== "undefined") {
       const isLoggedIn = localStorage.getItem("isLoggedIn");
       if (isLoggedIn === "true") {
-        router.push("/"); // Redirigir si el usuario ya está autenticado
+        router.replace("/"); // Redirección segura
       }
     }
   }, [router]);
 
+  // Manejo de autenticación
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Verificar si las credenciales coinciden con el usuario de prueba
-    if (email === testUser.email && password === testUser.password) {
-      localStorage.setItem("isLoggedIn", "true"); // Guardar estado de autenticación
-      setShowSuccessModal(true); // Mostrar modal de éxito
-      setErrorMessage(""); // Limpiar mensaje de error
-      setTimeout(() => router.push("/"), 1000); // Redirigir después de 1 segundo
+    setIsLoading(true);
+
+    const user = USERS.find(
+      (user) => user.email === email && user.password === password
+    );
+
+    if (user) {
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("userId", user.id);
+      localStorage.setItem("userEmail", user.email);
+      localStorage.setItem("userData", JSON.stringify(user));
+      setShowSuccessModal(true);
+      setErrorMessage("");
+      setTimeout(() => router.push(`/profile/${user.id}`), 1000);
     } else {
       setErrorMessage("Correo o contraseña incorrectos");
-      setShowErrorModal(true); // Mostrar modal de error
+      setShowErrorModal(true);
     }
+    setIsLoading(false);
   };
 
   const closeModal = () => {
@@ -50,21 +72,21 @@ export default function Login() {
   };
 
   return (
-    <div className=" grid grid-cols-4  bg-gray-100">
+    <div className="grid grid-cols-4 bg-gray-100">
       <div className="hidden md:block w-full max-h-screen col-start-1 col-end-3 overflow-hidden">
         <img
-          src="/paisaje.jpg" // Puedes reemplazar esta URL con la imagen que desees
+          src="/paisaje.jpg"
           alt="Imagen de bienvenida"
           className="w-full h-full object-cover object-center"
         />
       </div>
-      <div className="w-ful1 h-screen flex flex-col justify-center p-8 space-y-6 bg-white rounded shadow-md col-start-1 col-end-6  md:col-start-3 md:col-end-5">
-        <div className=" hidden md:flex justify-between">
+      <div className="w-ful1 h-screen flex flex-col justify-center p-8 space-y-6 bg-white rounded shadow-md col-start-1 col-end-6 md:col-start-3 md:col-end-5">
+        <div className="hidden md:flex justify-between">
           <h1 className="text-primary text-2xl">VIVAVIA</h1>
           <h1>ES</h1>
         </div>
-        <div className="">
-          <h2 className="text-3xl font-normal text-center text-primary m-0 ">
+        <div>
+          <h2 className="text-3xl font-normal text-center text-primary m-0">
             Iniciar sesión
           </h2>
           <p className="text-center text-gray-600 m-0">
@@ -86,7 +108,7 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="mt-1 block w-full px-5 py-4  bg-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-5 py-4 bg-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="correo@ejemplo.com"
             />
           </div>
@@ -104,7 +126,7 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="mt-1 block w-full px-5 py-4  bg-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-5 py-4 bg-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="••••••••"
             />
           </div>
@@ -116,9 +138,10 @@ export default function Login() {
           <div>
             <button
               type="submit"
+              disabled={isLoading}
               className="w-full px-4 py-4 uppercase text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Iniciar Sesión
+              {isLoading ? "Iniciando..." : "Iniciar Sesión"}
             </button>
           </div>
         </form>

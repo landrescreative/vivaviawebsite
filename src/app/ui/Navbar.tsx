@@ -252,9 +252,12 @@ const Navbar: React.FC = ({
             >
               {isesion}
             </Link>
-            <button className="py-3 px-5 bg-primary text-center text-white rounded-full hover:scale-105 transition-transform hover:shadow-lg">
+            <Link
+              href={"/register"}
+              className="py-3 px-5 bg-primary text-center text-white rounded-full hover:scale-105 transition-transform hover:shadow-lg"
+            >
               {registro}
-            </button>
+            </Link>
           </div>
         )}
       </div>
