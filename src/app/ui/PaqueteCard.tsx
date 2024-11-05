@@ -73,16 +73,16 @@ export default function PaqueteCard({
       {/* Detalles del Paquete */}
       <div className="flex-grow flex flex-col">
         {/* Título, Destino y Salida (Fondo Azul Completo) */}
-        <div className="bg-primary text-white p-4 flex flex-col space-y-2 rounded-tr-lg">
+        <div className="bg-[#001682] text-white p-4 flex flex-col space-y-2 rounded-tr-lg">
           <div className="flex items-center justify-between">
             <h3 className="text-xl font-semibold">{paquete.titulo}</h3>
-            <p className="text-sm">
+            <p className="text-sm font-bold tracking-wide">
               {paquete.destino} | Salida: {paquete.salida}
             </p>
           </div>
 
           {/* Encabezados dentro de la Zona Azul */}
-          <div className="grid grid-cols-3 gap-4 text-sm font-bold">
+          <div className="grid grid-cols-3 gap-4 text-sm font-normal">
             <p>Vuelo</p>
             <p>Hospedaje</p>
             <p>Resumen del Paquete</p>

@@ -3,44 +3,56 @@
 
 import { usePathname } from "next/navigation";
 import TopBar from "@/app/ui/TopBar";
-import Sidebar from "@/app/ui/Sidebar"; // Asegúrate de que existe un componente Sidebar con tus rutas
+import Sidebar from "@/app/ui/Sidebar";
+import { ReactNode, useMemo } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 interface DashboardLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
+
+// Crear la instancia del QueryClient fuera del componente para evitar recrearla en cada renderizado
+const queryClient = new QueryClient();
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const pathname = usePathname();
-  const pageTitles: { [key: string]: string } = {
-    "/dashboard": "Dashboard",
-    "/dashboard/paquetes": "Paquetes",
-    "/dashboard/finanzas": "Finanzas",
-    "/dashboard/soporte": "Soporte",
-    "/dashboard/blog": "Blog",
-  };
+
+  // Uso de useMemo para almacenar los títulos de cada página, evitando recrearlos en cada render
+  const pageTitles = useMemo(
+    () => ({
+      "/dashboard": "Dashboard",
+      "/dashboard/paquetes": "Paquetes",
+      "/dashboard/finanzas": "Finanzas",
+      "/dashboard/soporte": "Soporte",
+      "/dashboard/blog": "Blog",
+    }),
+    []
+  );
 
   const title = pageTitles[pathname] || "Dashboard";
 
   const handleLogout = () => {
-    // Aquí puedes agregar la lógica para cerrar sesión
+    // Lógica de cierre de sesión
     console.log("Cerrar sesión");
   };
 
   return (
-    <div className="flex h-screen">
-      {/* Sidebar */}
-      <Sidebar />
+    <QueryClientProvider client={queryClient}>
+      <div className="flex h-screen">
+        {/* Sidebar */}
+        <Sidebar />
 
-      {/* Main Content */}
-      <div className="flex flex-col flex-1">
-        {/* TopBar */}
-        <TopBar title={title} onLogout={handleLogout} />
+        {/* Contenido Principal */}
+        <div className="flex flex-col flex-1">
+          {/* Barra Superior */}
+          <TopBar title={title} onLogout={handleLogout} />
 
-        {/* Page Content */}
-        <main className="flex-1 p-6 bg-gray-100 overflow-y-auto">
-          {children}
-        </main>
+          {/* Contenido de la Página */}
+          <main className="flex-1 p-6 bg-[#F6FAFF] overflow-y-auto">
+            {children}
+          </main>
+        </div>
       </div>
-    </div>
+    </QueryClientProvider>
   );
 }

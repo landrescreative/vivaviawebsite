@@ -103,19 +103,10 @@ export default function DashboardHome() {
 
   // Estilos para los títulos
   const titleStyle =
-    "text-2xl font-semibold text-blue-600 uppercase border-b pb-2 mb-4";
+    "text-2xl font-semibold text-primary uppercase border-b pb-2 mb-4";
 
   return (
     <div className="p-6 space-y-6">
-      <motion.h1
-        className="text-3xl font-bold text-blue-600 uppercase"
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn}
-      >
-        Dashboard
-      </motion.h1>
-
       {/* Tarjetas de datos del dashboard */}
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -126,44 +117,57 @@ export default function DashboardHome() {
         <DashboardCard
           title="Balance Mensual"
           value={`$${dashboardData?.balanceMensual}`}
-          icon={<FaMoneyBillWave className="text-blue-600" />}
-          bgColor="bg-blue-100"
+          icon={<FaMoneyBillWave className="text-blue-500" />}
+          bgColor="bg-blue-700"
+          iconBgColor="bg-blue-200"
+          valueColor="text-white"
+          titleColor="text-white"
         />
         <DashboardCard
           title="Balance General"
           value={`$${dashboardData?.balanceGeneral}`}
-          icon={<FaChartLine className="text-green-600" />}
-          bgColor="bg-green-100"
+          icon={<FaChartLine className="text-pink-500" />}
+          bgColor="bg-white"
+          iconBgColor="bg-pink-200"
+          titleColor="text-[#718EBF]"
         />
         <DashboardCard
           title="Último Viaje"
-          value={`${dashboardData?.ultimoViaje.destino} - ${dashboardData?.ultimoViaje.fecha}`}
-          icon={<FaPlaneDeparture className="text-yellow-600" />}
-          bgColor="bg-yellow-100"
+          value={`${dashboardData?.ultimoViaje.destino}`}
+          icon={<FaPlaneDeparture className="text-teal-500" />}
+          bgColor="bg-white"
+          iconBgColor="bg-teal-100"
+          titleColor="text-[#718EBF]"
         />
         <DashboardCard
           title="Paquetes Activos"
           value={dashboardData?.paquetesActivos}
-          icon={<FaSuitcase className="text-purple-600" />}
-          bgColor="bg-purple-100"
+          icon={<FaSuitcase className="text-blue-500" />}
+          bgColor="bg-white"
+          iconBgColor="bg-blue-100"
+          titleColor="text-[#718EBF]"
         />
         <DashboardCard
           title="Paquetes en Promoción"
           value={dashboardData?.paquetesEnPromocion}
-          icon={<FaTags className="text-orange-600" />}
-          bgColor="bg-orange-100"
+          icon={<FaTags className="text-yellow-500" />}
+          bgColor="bg-white"
+          iconBgColor="bg-yellow-100"
+          titleColor="text-[#718EBF]"
         />
         <DashboardCard
-          title="Paquetes Vendidos en el Mes"
+          title="VENDIDOS ESTE MES"
           value={dashboardData?.paquetesVendidosMes}
-          icon={<FaSuitcase className="text-pink-600" />}
-          bgColor="bg-pink-100"
+          icon={<FaSuitcase className="text-orange-500" />}
+          bgColor="bg-white"
+          iconBgColor="bg-orange-100"
+          titleColor="text-[#718EBF]"
         />
       </motion.div>
 
       {/* Tabla de Transacciones */}
       <motion.div
-        className="mt-8"
+        className="mt-8 "
         initial="hidden"
         animate="visible"
         variants={slideUp}
@@ -194,8 +198,8 @@ export default function DashboardHome() {
         animate="visible"
         variants={slideUp}
       >
-        <h2 className={titleStyle}>Tickets de Soporte</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <h2 className={titleStyle}>Tickets de Soporte pendientes</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Suspense fallback={<div>Cargando tickets de soporte...</div>}>
             {ticketsSoporte.slice(0, 2).map((ticket, index) => (
               <SupportTicketCard

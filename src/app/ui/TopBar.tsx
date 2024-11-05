@@ -1,24 +1,44 @@
 // app/ui/TopBar.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation"; // Importar usePathname
 import { FaUserCircle } from "react-icons/fa";
 import NotificationDropdown from "@/app/ui/NotificationDropdown";
 
 interface TopBarProps {
-  title: string;
   onLogout: () => void;
 }
 
-export default function TopBar({ title, onLogout }: TopBarProps) {
+export default function TopBar({ onLogout }: TopBarProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [title, setTitle] = useState("Dashboard");
+  const pathname = usePathname(); // Obtener la ruta actual
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  useEffect(() => {
+    // Mapa de títulos basado en la ruta sin el prefijo de idioma
+    const routeTitles: { [key: string]: string } = {
+      "/dashboard": "Dashboard",
+      "/dashboard/paquetes": "Paquetes",
+      "/dashboard/finanzas": "Finanzas",
+      "/dashboard/soporte": "Soporte",
+      "/dashboard/blog": "Blog",
+    };
+
+    // Quitar el prefijo de idioma de la ruta
+    const normalizedPath = pathname.replace(/^\/[a-z]{2}/, ""); // Elimina "/es" o cualquier prefijo de dos letras
+
+    // Establece el título en función de la ruta actual sin el prefijo de idioma
+    const matchedTitle = routeTitles[normalizedPath] || "Dashboard";
+    setTitle(matchedTitle);
+  }, [pathname]); // Escucha cambios en pathname
+
   return (
-    <div className="flex justify-between items-center p-4 bg-blue-600 text-white shadow-md">
+    <div className="flex justify-between items-center p-4 bg-white  text-primary shadow-md">
       <h1 className="text-lg font-bold uppercase">{title}</h1>
 
       <div className="flex items-center space-x-4">

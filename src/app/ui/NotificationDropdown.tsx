@@ -1,5 +1,6 @@
 // app/ui/NotificationDropdown.tsx
 import { useState, useEffect } from "react";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 interface Notification {
   id: number;
@@ -42,8 +43,12 @@ export default function NotificationDropdown() {
 
   return (
     <div className="relative z-50">
-      <button onClick={toggleDropdown} className="relative">
-        <span className="text-2xl">🔔</span>
+      <button
+        onClick={toggleDropdown}
+        className="relative bg-gray-500/15 p-1 rounded-full flex items-center justify-center"
+      >
+        <IoIosNotificationsOutline size={30} className="text-red-500" />
+
         {unreadCount > 0 && (
           <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full"></span>
         )}

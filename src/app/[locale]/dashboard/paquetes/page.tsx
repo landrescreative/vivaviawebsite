@@ -121,20 +121,26 @@ export default function PaquetesPage() {
         <DashboardCard
           title="Paquetes Activos"
           value={paquetes.filter((p) => p.estado === "Activo").length}
-          icon={<FaSuitcase className="text-blue-600" />}
-          bgColor="bg-blue-100"
+          icon={<FaSuitcase className="text-blue-500" />}
+          bgColor="bg-white"
+          iconBgColor="bg-blue-100"
+          titleColor="text-[#718EBF]"
         />
         <DashboardCard
           title="Paquetes en Promoción"
           value={5}
-          icon={<FaTags className="text-orange-600" />}
-          bgColor="bg-orange-100"
+          icon={<FaTags className="text-yellow-500" />}
+          bgColor="bg-white"
+          iconBgColor="bg-yellow-100"
+          titleColor="text-[#718EBF]"
         />
         <DashboardCard
           title="Vendidos Este Mes"
           value={12}
-          icon={<FaPlaneDeparture className="text-green-600" />}
-          bgColor="bg-green-100"
+          icon={<FaSuitcase className="text-orange-500" />}
+          bgColor="bg-white"
+          iconBgColor="bg-orange-100"
+          titleColor="text-[#718EBF]"
         />
       </div>
 

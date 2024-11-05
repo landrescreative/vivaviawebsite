@@ -15,155 +15,20 @@ import {
   FaCalendar,
 } from "react-icons/fa";
 import Image from "next/image";
-
-// Información de la tarjeta bancaria
-const tarjetaBancaria = {
-  nombre: "Juan Pérez",
-  fechaVencimiento: "08/24",
-  ultimosDigitos: "6789",
-  balanceEstimado: "$5,250.00",
-};
-
-// Datos de transacciones
-const transacciones = [
-  {
-    icono: "✈️",
-    viaje: "Cancún - México",
-    fechaViaje: "2023-09-12",
-    formaPago: "Web",
-    ultimosDigitosTarjeta: "1234",
-    status: "Completado",
-    monto: 2000,
-  },
-  {
-    icono: "🏖️",
-    viaje: "Playa del Carmen",
-    fechaViaje: "2023-09-20",
-    formaPago: "Transferencia",
-    ultimosDigitosTarjeta: "5678",
-    status: "Pendiente",
-    monto: 1500,
-  },
-  {
-    icono: "🚢",
-    viaje: "Isla Mujeres - México",
-    fechaViaje: "2023-09-22",
-    formaPago: "Web",
-    ultimosDigitosTarjeta: "4321",
-    status: "Completado",
-    monto: 1800,
-  },
-  {
-    icono: "🌄",
-    viaje: "Tulum - México",
-    fechaViaje: "2023-09-25",
-    formaPago: "Transferencia",
-    ultimosDigitosTarjeta: "8765",
-    status: "Cancelado",
-    monto: 2100,
-  },
-  {
-    icono: "🏕️",
-    viaje: "Holbox - México",
-    fechaViaje: "2023-09-28",
-    formaPago: "Web",
-    ultimosDigitosTarjeta: "1234",
-    status: "Completado",
-    monto: 2200,
-  },
-  {
-    icono: "🚲",
-    viaje: "Cozumel - México",
-    fechaViaje: "2023-10-01",
-    formaPago: "Transferencia",
-    ultimosDigitosTarjeta: "5678",
-    status: "Pendiente",
-    monto: 2400,
-  },
-  {
-    icono: "🦜",
-    viaje: "Chichen Itza - México",
-    fechaViaje: "2023-10-03",
-    formaPago: "Web",
-    ultimosDigitosTarjeta: "4321",
-    status: "Completado",
-    monto: 2600,
-  },
-];
-
-// Datos de paquetes vendidos
-const paquetesVendidos = [
-  {
-    producto: "Paquete Cancún Todo Incluido",
-    locacion: "Cancún, México",
-    fecha: "2023-10-05",
-    cantidad: 2,
-    precio: "$3,000",
-    estado: "Completado",
-    imagen: "/paisaje.jpg",
-  },
-  {
-    producto: "Paquete Tulum Aventura",
-    locacion: "Tulum, México",
-    fecha: "2023-10-10",
-    cantidad: 1,
-    precio: "$1,500",
-    estado: "Pendiente",
-    imagen: "/paisaje.jpg",
-  },
-  {
-    producto: "Tour Playa del Carmen",
-    locacion: "Playa del Carmen, México",
-    fecha: "2023-10-12",
-    cantidad: 3,
-    precio: "$4,500",
-    estado: "Cancelado",
-    imagen: "/paisaje.jpg",
-  },
-  {
-    producto: "Paquete Isla Mujeres",
-    locacion: "Isla Mujeres, México",
-    fecha: "2023-10-15",
-    cantidad: 4,
-    precio: "$2,000",
-    estado: "Completado",
-    imagen: "/paisaje.jpg",
-  },
-  {
-    producto: "Tour Cozumel Maravillas",
-    locacion: "Cozumel, México",
-    fecha: "2023-10-20",
-    cantidad: 1,
-    precio: "$3,200",
-    estado: "Pendiente",
-    imagen: "/paisaje.jpg",
-  },
-  {
-    producto: "Escapada a Holbox",
-    locacion: "Isla Holbox, México",
-    fecha: "2023-10-25",
-    cantidad: 2,
-    precio: "$2,800",
-    estado: "Completado",
-    imagen: "/paisaje.jpg",
-  },
-  {
-    producto: "Excursión a Chichen Itza",
-    locacion: "Chichen Itza, México",
-    fecha: "2023-10-30",
-    cantidad: 3,
-    precio: "$3,600",
-    estado: "Cancelado",
-    imagen: "/paisaje.jpg",
-  },
-];
+import { useFinancesData } from "./hooks/useTransactions";
 
 export default function FinanzasPage() {
-  // Estados para la paginación
+  // Estado para la paginación
   const [paquetePage, setPaquetePage] = useState(0);
   const [transaccionPage, setTransaccionPage] = useState(0);
   const itemsPerPagePaquetes = 5;
   const itemsPerPageTransacciones = 3;
+
+  const { data, isLoading } = useFinancesData();
+
+  if (isLoading) return <p>Cargando datos...</p>;
+
+  const { tarjetaBancaria, transacciones, paquetesVendidos } = data;
 
   // Calcular el número total de páginas
   const totalPaquetePages = Math.ceil(
@@ -206,9 +71,13 @@ export default function FinanzasPage() {
 
   return (
     <div className="p-6 space-y-6">
+      <h2 className="text-3xl font-bold text-blue-600 uppercase mb-8">
+        HISTORIAL DE INGRESOS
+      </h2>
+
       {/* Gráficas de Ingresos */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
+        className="grid grid-cols-2 md:grid-cols-6 gap-6 mt-8"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -228,25 +97,34 @@ export default function FinanzasPage() {
           title="Balance Mensual"
           value="$4,500"
           icon={<FaCalendar className="text-blue-600" />}
-          bgColor="bg-blue-100 rounded-lg shadow-lg"
+          bgColor="bg-blue-700"
+          iconBgColor="bg-blue-200"
+          valueColor="text-white"
+          titleColor="text-white"
         />
         <DashboardCard
           title="Balance General"
           value="$35,200"
-          icon={<FaBalanceScale className="text-green-600" />}
-          bgColor="bg-green-100 rounded-lg shadow-lg"
+          icon={<FaBalanceScale className="text-pink-500" />}
+          bgColor="bg-white"
+          iconBgColor="bg-pink-200"
+          titleColor="text-[#718EBF]"
         />
         <DashboardCard
           title="Último Viaje"
           value="$2,000"
-          icon={<FaPlane className="text-orange-600" />}
-          bgColor="bg-orange-100 rounded-lg shadow-lg"
+          icon={<FaPlane className="text-teal-500" />}
+          bgColor="bg-white"
+          iconBgColor="bg-teal-100"
+          titleColor="text-[#718EBF]"
         />
         <DashboardCard
           title="Ingresos Totales"
           value="$75,000"
           icon={<FaDollarSign className="text-purple-600" />}
-          bgColor="bg-purple-100 rounded-lg shadow-lg"
+          bgColor="bg-white"
+          iconBgColor="bg-purple-100"
+          titleColor="text-[#718EBF]"
         />
       </motion.div>
 
@@ -256,12 +134,10 @@ export default function FinanzasPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
       >
-        <TarjetaBancaria
-          nombre={tarjetaBancaria.nombre}
-          fechaVencimiento={tarjetaBancaria.fechaVencimiento}
-          ultimosDigitos={tarjetaBancaria.ultimosDigitos}
-          balanceEstimado={tarjetaBancaria.balanceEstimado}
-        />
+        <h2 className="text-3xl font-bold text-blue-600 uppercase my-8">
+          TARJETAS
+        </h2>
+        <TarjetaBancaria {...tarjetaBancaria} />
       </motion.div>
 
       {/* Transacciones */}
@@ -270,18 +146,16 @@ export default function FinanzasPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.6 }}
       >
-        <h2 className="text-3xl font-bold text-blue-600 uppercase mt-8">
+        <h2 className="text-3xl font-bold text-blue-600 uppercase my-8">
           Transacciones
         </h2>
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <TransactionTable transactions={paginatedTransacciones} />
-          <div className="flex justify-center mt-4">
-            {renderPaginationButtons(
-              transaccionPage,
-              totalTransaccionPages,
-              setTransaccionPage
-            )}
-          </div>
+        <TransactionTable transactions={paginatedTransacciones} />
+        <div className="flex justify-center mt-4">
+          {renderPaginationButtons(
+            transaccionPage,
+            totalTransaccionPages,
+            setTransaccionPage
+          )}
         </div>
       </motion.div>
 
@@ -291,32 +165,32 @@ export default function FinanzasPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.8 }}
       >
-        <h2 className="text-3xl font-bold text-blue-600 uppercase mt-8">
+        <h2 className="text-3xl font-bold text-blue-600 uppercase my-8">
           Últimos Paquetes Vendidos
         </h2>
-        <div className="overflow-x-auto bg-white rounded-lg shadow-lg p-6">
+        <div className="overflow-x-auto bg-white rounded-3xl shadow-lg p-6">
           <table className="min-w-full bg-white">
-            <thead className="bg-gray-100 border-b">
+            <thead className="bg-primary rounded-2xl">
               <tr>
-                <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                <th className="p-4 text-left text-sm font-semibold text-white">
                   Imagen
                 </th>
-                <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                <th className="p-4 text-left text-sm font-semibold text-white">
                   Producto
                 </th>
-                <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                <th className="p-4 text-left text-sm font-semibold text-white">
                   Locación
                 </th>
-                <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                <th className="p-4 text-left text-sm font-semibold text-white">
                   Fecha
                 </th>
-                <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                <th className="p-4 text-left text-sm font-semibold text-white">
                   Cantidad
                 </th>
-                <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                <th className="p-4 text-left text-sm font-semibold text-white">
                   Precio
                 </th>
-                <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                <th className="p-4 text-left text-sm font-semibold text-white">
                   Estado
                 </th>
               </tr>
@@ -361,7 +235,6 @@ export default function FinanzasPage() {
               ))}
             </motion.tbody>
           </table>
-
           {/* Paginación de Paquetes */}
           <div className="flex justify-center mt-4">
             {renderPaginationButtons(

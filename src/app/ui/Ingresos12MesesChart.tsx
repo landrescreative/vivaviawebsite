@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Cell,
 } from "recharts";
 
 const ingresos12Meses = [
@@ -24,19 +25,24 @@ const ingresos12Meses = [
   { mes: "Sep", ingresos: 5000 },
 ];
 
+// Encontrar el ingreso más alto
+const maxIngreso = Math.max(...ingresos12Meses.map((item) => item.ingresos));
+
 export default function Ingresos12MesesChart() {
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
-      <h2 className="text-2xl font-semibold text-blue-600 uppercase mb-4">
-        Ingresos de los Últimos 12 Meses
-      </h2>
+    <div className="bg-white  shadow-2xl shadow-black/5 rounded-3xl p-6 col-span-2 md:col-span-4">
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={ingresos12Meses}>
-          <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="mes" />
-          <YAxis />
           <Tooltip />
-          <Bar dataKey="ingresos" fill="#16DBCC" radius={[10, 10, 0, 0]} />
+          <Bar dataKey="ingresos" radius={[10, 10, 0, 0]}>
+            {ingresos12Meses.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={entry.ingresos === maxIngreso ? "#16DBCC" : "#edf0f7"}
+              />
+            ))}
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
     </div>
