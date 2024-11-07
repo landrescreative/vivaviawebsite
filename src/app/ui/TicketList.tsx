@@ -60,10 +60,6 @@ export const TicketList = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h2 className="text-2xl font-bold text-blue-600 mb-6">
-        {isTrash ? "Papelera de Tickets" : "Bandeja de Entrada"}
-      </h2>
-
       <div className="mb-4">
         <input
           type="text"

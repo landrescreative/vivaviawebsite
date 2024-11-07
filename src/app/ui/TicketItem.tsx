@@ -74,7 +74,9 @@ export const TicketItem: React.FC<TicketItemProps> = ({
           </button>
         )}
       </td>
-      <td className={`m-4 p-1 text-left flex items-center ${color}`}>
+      <td
+        className={`m-4 p-1 text-left flex rounded-full px-3 justify-center items-center ${color}`}
+      >
         {icon}
         <span>{ticket.categoria || "Sin Categoría"}</span>
       </td>
@@ -92,11 +94,11 @@ export const TicketItem: React.FC<TicketItemProps> = ({
               toggleResolved(ticket.id, ticket.resuelto);
             }}
             className={`flex items-center ${
-              ticket.resuelto ? "text-gray-500" : "text-green-500"
+              ticket.resuelto ? "text-gray-500" : "text-primary"
             }`}
           >
             <FaCheckCircle className="mr-1" />
-            {ticket.resuelto ? "Desmarcar Resuelto" : "Marcar como Resuelto"}
+            {ticket.resuelto ? "" : ""}
           </button>
         )}
 
