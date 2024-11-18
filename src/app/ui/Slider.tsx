@@ -1,39 +1,56 @@
 "use client";
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const brands = [
-  "/aeromexico.png",
-  "/volaris-logo.svg",
-  "/aeromexico.png",
-  "/volaris-logo.svg",
-  "/aeromexico.png",
-  // Add as many brand images as needed
-];
-
 const Slider = () => {
+  // Lista de imágenes base
+  const brands = [
+    "/aeromexico.png",
+    "/volaris-logo.svg",
+    "/aeromexico.png",
+    "/volaris-logo.svg",
+    "/aeromexico.png",
+  ];
+
+  const [repeatedBrands, setRepeatedBrands] = useState([...brands, ...brands]); // Duplicamos desde el inicio para asegurar continuidad
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const containerWidth = containerRef.current.offsetWidth;
+      const itemWidth = 240; // Ancho estimado de cada imagen
+      const itemsNeeded = Math.ceil(containerWidth / itemWidth) + 1;
+
+      // Calculamos las repeticiones necesarias para garantizar un ciclo fluido
+      const totalItems = itemsNeeded * 2; // Duplicar para el efecto infinito
+      setRepeatedBrands((prev) => {
+        const repetitions = Math.ceil(totalItems / brands.length);
+        return Array(repetitions).fill(brands).flat();
+      });
+    }
+  }, []);
+
   return (
-    <div className="overflow-hidden py-8">
+    <div
+      ref={containerRef}
+      className="relative overflow-hidden py-8 bg-gray-100"
+      style={{ width: "100%" }}
+    >
       <motion.div
-        className="flex space-x-8 py-4"
+        className="flex"
         animate={{ x: ["0%", "-100%"] }}
-        transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+        transition={{
+          repeat: Infinity,
+          duration: 25, // Ajusta la duración según la velocidad deseada
+          ease: "linear",
+        }}
       >
-        {brands.map((brand, index) => (
+        {repeatedBrands.map((brand, index) => (
           <img
             key={index}
             src={brand}
             alt={`Brand ${index}`}
-            className="w-60  object-contain grayscale opacity-50"
-          />
-        ))}
-        {/* Repeat brands to create a seamless infinite effect */}
-        {brands.map((brand, index) => (
-          <img
-            key={`${index}-duplicate`}
-            src={brand}
-            alt={`Brand ${index}`}
-            className="w-60  object-contain grayscale opacity-50"
+            className="w-60 object-contain mx-4"
           />
         ))}
       </motion.div>

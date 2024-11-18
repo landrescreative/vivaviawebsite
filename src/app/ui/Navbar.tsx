@@ -9,18 +9,9 @@ import { IoIosArrowDown, IoIosCall, IoMdMenu, IoMdClose } from "react-icons/io";
 import { FaDollarSign } from "react-icons/fa6";
 import { GrLanguage } from "react-icons/gr";
 import { AiOutlineUser } from "react-icons/ai"; // Icono de perfil
+import { useTranslations } from "next-intl";
 
-const Navbar: React.FC = ({
-  inicio,
-  paquetes,
-  blog,
-  nosotros,
-  contacto,
-  isesion,
-  registro,
-  soporte,
-  preguntas,
-}) => {
+const Navbar: React.FC = ({}) => {
   const [showCurrencyDropdown, setShowCurrencyDropdown] = useState(false);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -70,12 +61,19 @@ const Navbar: React.FC = ({
     };
   }, []);
 
+  // Bloquear scrolll en mobile
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
+  }, [isMobileMenuOpen]);
+
   // Función para cerrar sesión
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     setIsAuthenticated(false);
     router.push("/login");
   };
+
+  const t = useTranslations();
 
   return (
     <div className="w-full fixed z-50 top-0 text-black">
@@ -84,8 +82,8 @@ const Navbar: React.FC = ({
         <h1 className="flex justify-center items-center gap-1">
           <IoIosCall /> 800 55592283
         </h1>
-        <h1 className="">{soporte}</h1>
-        <h1 className="">{preguntas}</h1>
+        <h1 className="">{t("navbar.soporte")}</h1>
+        <h1 className="">{t("navbar.preguntas")}</h1>
 
         {/* Dropdown para MXN */}
         <div className="relative" ref={currencyDropdownRef}>
@@ -184,31 +182,31 @@ const Navbar: React.FC = ({
         {/* Links de navegación */}
         <div className="flex justify-around gap-5 text-gray-500">
           <Link href="/" className="text-primary uppercase hidden md:block">
-            {inicio}
+            {t("navbar.inicio")}
           </Link>
           <Link
             href="/destinos"
             className="hover:text-primary uppercase transition-colors duration-300 hidden md:block"
           >
-            {paquetes}
+            {t("navbar.paquetes")}
           </Link>
           <Link
             href="/blog"
             className="hover:text-primary uppercase transition-colors duration-300 hidden md:block"
           >
-            {blog}
+            {t("navbar.blog")}
           </Link>
           <Link
             href="/nosotros"
             className="hover:text-primary uppercase transition-colors duration-300 hidden md:block"
           >
-            {nosotros}
+            {t("navbar.nosotros")}
           </Link>
           <Link
             href="/contacto"
             className="hover:text-primary uppercase transition-colors duration-300 hidden md:block"
           >
-            {contacto}
+            {t("navbar.contacto")}
           </Link>
         </div>
 
@@ -250,13 +248,13 @@ const Navbar: React.FC = ({
               href="/login"
               className="text-primary hover:scale-105 transition-transform"
             >
-              {isesion}
+              {t("navbar.isesion")}
             </Link>
             <Link
               href={"/register"}
               className="py-3 px-5 bg-primary text-center text-white rounded-full hover:scale-105 transition-transform hover:shadow-lg"
             >
-              {registro}
+              {t("navbar.registro")}
             </Link>
           </div>
         )}
@@ -279,19 +277,19 @@ const Navbar: React.FC = ({
               className="flex flex-col gap-5"
             >
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-                {inicio}
+                {t("navbar.inicio")}
               </Link>
               <Link href="/destinos" onClick={() => setIsMobileMenuOpen(false)}>
-                {paquetes}
+                {t("navbar.paquetes")}
               </Link>
               <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)}>
-                {blog}
+                {t("navbar.blog")}
               </Link>
               <Link href="/nosotros" onClick={() => setIsMobileMenuOpen(false)}>
-                {nosotros}
+                {t("navbar.nosotros")}
               </Link>
               <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>
-                {contacto}
+                {t("navbar.contacto")}
               </Link>
             </motion.div>
 
@@ -340,10 +338,10 @@ const Navbar: React.FC = ({
                     href="/login"
                     className="text-primary hover:scale-105 transition-transform"
                   >
-                    {isesion}
+                    {t("navbar.isesion")}
                   </Link>
                   <button className="py-3 px-5 bg-primary text-center text-white rounded-full hover:scale-105 transition-transform hover:shadow-lg">
-                    {registro}
+                    {t("navbar.registro")}
                   </button>
                 </>
               )}

@@ -14,5 +14,215 @@
     "title": "DESCUBRE",
     "subtitle": "NUEVAS EXPERIENCIAS DE VIAJE",
     "button": "VER MAS"
+  },
+  "recentTravels": {
+    "title": "Los lugares más populares de México",
+    "description": "Los paquetes más seleccionados por nuestros seguidores",
+    "from": "Desde",
+    "destinations": [
+      {
+        "name": "Cancún",
+        "imgSrc": "/cancun.jpg",
+        "price": 200,
+        "alt": "Imagen del destino Cancún"
+      },
+      {
+        "name": "Tulum",
+        "imgSrc": "/tulum.jpg",
+        "price": 150,
+        "alt": "Imagen del destino Tulum"
+      },
+      {
+        "name": "Chichén Itzá",
+        "imgSrc": "/chichenitza.jpg",
+        "price": 100,
+        "alt": "Imagen del destino Chichén Itzá"
+      },
+      {
+        "name": "Los Cabos",
+        "imgSrc": "/cabos.jpg",
+        "price": 250,
+        "alt": "Imagen del destino Los Cabos"
+      }
+    ]
+  },
+  "offers": {
+    "title": "Ahorra más en tus vacaciones con nuestros paquetes",
+    "highlight": "paquetes",
+    "description": "Descubre nuestras ofertas exclusivas para tus próximas vacaciones",
+    "offersList": [
+      {
+        "title": "Chichen Itza",
+        "description": "4 días, 5 noches",
+        "price": 100,
+        "imageUrl": "/chichenitza.jpg",
+        "benefits": ["Desayuno incluido", "Transporte", "Guía turístico"]
+      },
+      {
+        "title": "Tulum",
+        "description": "3 días, 4 noches",
+        "price": 200,
+        "imageUrl": "/tulum.jpg",
+        "benefits": ["Desayuno incluido", "Transporte", "Guía turístico"]
+      },
+      {
+        "title": "Cancún",
+        "description": "5 días, 6 noches",
+        "price": 300,
+        "imageUrl": "/cancun.jpg",
+        "benefits": ["Desayuno incluido", "Transporte", "Guía turístico"]
+      },
+      {
+        "title": "Los Cabos",
+        "description": "6 días, 7 noches",
+        "price": 400,
+        "imageUrl": "/cabos.jpg",
+        "benefits": ["Desayuno incluido", "Transporte", "Guía turístico"]
+      }
+    ]
+  },
+  "tarjetaOferta": {
+    "detailsButton": "VER DETALLES",
+    "from": "desde",
+    "price": "Precio",
+    "benefits": {
+      "hotel": "Hotel",
+      "meals": "Comidas",
+      "tours": "Tours"
+    }
+  },
+  "progresoScroll": {
+    "sections": [
+      {
+        "title": "Experiencia Personalizada",
+        "text": "Nos enfocamos en entender tus preferencias y necesidades únicas para diseñar un viaje a medida. Desde escapadas románticas hasta aventuras familiares, cada detalle es cuidadosamente planificado para que disfrutes al máximo.",
+        "img": "img1.png"
+      },
+      {
+        "title": "Planes de Viaje Flexibles",
+        "text": "Entendemos que cada viajero es diferente, por eso ofrecemos planes de viaje flexibles que se adaptan a tus necesidades. Cambia fechas, modifica itinerarios y ajusta tus planes sin complicaciones.",
+        "img": "img2.png"
+      },
+      {
+        "title": "Acceso a Ofertas Exclusivas",
+        "text": "Con Vivavía, tienes acceso a promociones y ofertas que no encontrarás en ningún otro lugar. Trabajamos directamente con proveedores de confianza para garantizar que obtengas el mejor valor por tu dinero.",
+        "img": "group68.png"
+      }
+    ]
+  },
+  "reviewsSection": {
+    "title": "Lo que dicen nuestros clientes",
+    "description": "Estas son algunas de las opiniones de nuestros clientes sobre nuestros servicios.",
+    "reviews": [
+      {
+        "name": "Juan Pérez",
+        "position": "Gerente de Ventas",
+        "review": "Increíble servicio, el equipo fue muy profesional y atento. Superaron todas nuestras expectativas.",
+        "image": "/25.jpg"
+      },
+      {
+        "name": "Ana López",
+        "position": "Directora de Marketing",
+        "review": "Trabajar con ellos fue una experiencia fantástica. La calidad del producto fue sobresaliente.",
+        "image": "/80.jpg"
+      },
+      {
+        "name": "Carlos García",
+        "position": "Jefe de Tecnología",
+        "review": "Excelente atención al cliente. Los recomendaría sin dudarlo para cualquier tipo de proyecto.",
+        "image": "/58.jpg"
+      }
+    ]
+  },
+  "footer": {
+    "newsletter": {
+      "title": "Suscríbete a nuestro newsletter",
+      "description": "Recibe promociones únicas, cupones, sé el primero en probar nuestros nuevos paquetes, todo directo a tu correo electrónico.",
+      "placeholder": "correo@gmail.com",
+      "button": "ENVIAR"
+    },
+    "sections": {
+      "navigation": "NAVEGACIÓN",
+      "popularDestinations": "DESTINOS POPULARES",
+      "popularActivities": "ACTIVIDADES POPULARES",
+      "generalInfo": "INFORMACIÓN GENERAL",
+      "contact": "CONTACTO",
+      "paymentMethods": "MÉTODOS DE PAGO",
+      "rightsReserved": "2024 VIVAVIA, todos los derechos reservados."
+    },
+    "links": {
+      "navigation": [
+        "Inicio",
+        "Destinos",
+        "Paquetes de viaje",
+        "Ofertas",
+        "Blog",
+        "Nosotros",
+        "Contacto"
+      ],
+      "popularDestinations": [
+        "Cancún",
+        "Tulum",
+        "Chichén Itzá",
+        "Volcán",
+        "Bosque"
+      ],
+      "popularActivities": [
+        "Luna de miel",
+        "Aventura",
+        "Camping",
+        "Fin de semana",
+        "Playas",
+        "Verano",
+        "Semana Santa"
+      ],
+      "generalInfo": [
+        "Quiénes somos",
+        "Política de cancelación",
+        "Forma de pago",
+        "Política de privacidad",
+        "Políticas de reembolso",
+        "Preguntas frecuentes"
+      ]
+    },
+    "contact": {
+      "phone": "+01 800 2599 12",
+      "email": "contacto@vivavia.com"
+    }
+  },
+  "destinos": {
+    "playas": {
+      "title": "Playas",
+      "location": "Cancún, México"
+    },
+    "desiertos": {
+      "title": "Desiertos",
+      "location": "Atacama, Chile"
+    },
+    "montañas": {
+      "title": "Montañas",
+      "location": "Andes, Perú"
+    },
+    "ciudades": {
+      "title": "Ciudades",
+      "location": "Buenos Aires, Argentina"
+    },
+    "camping": {
+      "title": "Camping",
+      "location": "Bariloche, Argentina"
+    },
+    "castillos": {
+      "title": "Castillos",
+      "location": "Cartagena, Colombia"
+    },
+    "tropical": {
+      "title": "Tropical",
+      "location": "San Andrés, Colombia"
+    }
+  },
+  "buttons": {
+    "learn_more": "Ver más sobre {location}",
+    "mute": "Silenciar",
+    "unmute": "Activar sonido"
   }
 }

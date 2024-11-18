@@ -14,5 +14,215 @@
     "title": "DISCOVER",
     "subtitle": "NEW TRAVEL EXPERIENCES",
     "button": "SEE MORE"
+  },
+  "recentTravels": {
+    "title": "The most popular places in Mexico",
+    "description": "The most selected packages by our followers",
+    "from": "From",
+    "destinations": [
+      {
+        "name": "Cancún",
+        "imgSrc": "/cancun.jpg",
+        "price": 200,
+        "alt": "Image of the destination Cancún"
+      },
+      {
+        "name": "Tulum",
+        "imgSrc": "/tulum.jpg",
+        "price": 150,
+        "alt": "Image of the destination Tulum"
+      },
+      {
+        "name": "Chichén Itzá",
+        "imgSrc": "/chichenitza.jpg",
+        "price": 100,
+        "alt": "Image of the destination Chichén Itzá"
+      },
+      {
+        "name": "Los Cabos",
+        "imgSrc": "/cabos.jpg",
+        "price": 250,
+        "alt": "Image of the destination Los Cabos"
+      }
+    ]
+  },
+  "offers": {
+    "title": "Save more on your vacations with our packages ",
+    "highlight": "packages",
+    "description": "Discover our exclusive offers for your next vacation",
+    "offersList": [
+      {
+        "title": "Chichen Itza",
+        "description": "4 days, 5 nights",
+        "price": 100,
+        "imageUrl": "/chichenitza.jpg",
+        "benefits": ["Breakfast included", "Transportation", "Tour guide"]
+      },
+      {
+        "title": "Tulum",
+        "description": "3 days, 4 nights",
+        "price": 200,
+        "imageUrl": "/tulum.jpg",
+        "benefits": ["Breakfast included", "Transportation", "Tour guide"]
+      },
+      {
+        "title": "Cancun",
+        "description": "5 days, 6 nights",
+        "price": 300,
+        "imageUrl": "/cancun.jpg",
+        "benefits": ["Breakfast included", "Transportation", "Tour guide"]
+      },
+      {
+        "title": "Los Cabos",
+        "description": "6 days, 7 nights",
+        "price": 400,
+        "imageUrl": "/cabos.jpg",
+        "benefits": ["Breakfast included", "Transportation", "Tour guide"]
+      }
+    ]
+  },
+  "tarjetaOferta": {
+    "detailsButton": "VIEW DETAILS",
+    "from": "from",
+    "price": "Price",
+    "benefits": {
+      "hotel": "Hotel",
+      "meals": "Meals",
+      "tours": "Tours"
+    }
+  },
+  "progresoScroll": {
+    "sections": [
+      {
+        "title": "Personalized Experience",
+        "text": "We focus on understanding your unique preferences and needs to design a tailor-made trip. From romantic getaways to family adventures, every detail is carefully planned for you to enjoy to the fullest.",
+        "img": "img1.png"
+      },
+      {
+        "title": "Flexible Travel Plans",
+        "text": "We understand that every traveler is different, so we offer flexible travel plans that adapt to your needs. Change dates, modify itineraries, and adjust your plans hassle-free.",
+        "img": "img2.png"
+      },
+      {
+        "title": "Access to Exclusive Offers",
+        "text": "With Vivavía, you have access to promotions and offers that you won't find anywhere else. We work directly with trusted providers to ensure you get the best value for your money.",
+        "img": "group68.png"
+      }
+    ]
+  },
+  "reviewsSection": {
+    "title": "What our clients say",
+    "description": "Here are some opinions from our clients about our services.",
+    "reviews": [
+      {
+        "name": "Juan Pérez",
+        "position": "Sales Manager",
+        "review": "Incredible service, the team was very professional and attentive. They exceeded all our expectations.",
+        "image": "/25.jpg"
+      },
+      {
+        "name": "Ana López",
+        "position": "Marketing Director",
+        "review": "Working with them was a fantastic experience. The quality of the product was outstanding.",
+        "image": "/80.jpg"
+      },
+      {
+        "name": "Carlos García",
+        "position": "Technology Head",
+        "review": "Excellent customer service. I would recommend them without hesitation for any kind of project.",
+        "image": "/58.jpg"
+      }
+    ]
+  },
+  "footer": {
+    "newsletter": {
+      "title": "Subscribe to our newsletter",
+      "description": "Receive unique promotions, coupons, be the first to try our new packages, all directly to your email.",
+      "placeholder": "email@example.com",
+      "button": "SEND"
+    },
+    "sections": {
+      "navigation": "NAVIGATION",
+      "popularDestinations": "POPULAR DESTINATIONS",
+      "popularActivities": "POPULAR ACTIVITIES",
+      "generalInfo": "GENERAL INFORMATION",
+      "contact": "CONTACT",
+      "paymentMethods": "PAYMENT METHODS",
+      "rightsReserved": "2024 VIVAVIA, all rights reserved."
+    },
+    "links": {
+      "navigation": [
+        "Home",
+        "Destinations",
+        "Travel Packages",
+        "Offers",
+        "Blog",
+        "About Us",
+        "Contact"
+      ],
+      "popularDestinations": [
+        "Cancún",
+        "Tulum",
+        "Chichén Itzá",
+        "Volcano",
+        "Forest"
+      ],
+      "popularActivities": [
+        "Honeymoon",
+        "Adventure",
+        "Camping",
+        "Weekend",
+        "Beaches",
+        "Summer",
+        "Easter"
+      ],
+      "generalInfo": [
+        "About Us",
+        "Cancellation Policy",
+        "Payment Method",
+        "Privacy Policy",
+        "Refund Policy",
+        "FAQs"
+      ]
+    },
+    "contact": {
+      "phone": "+01 800 2599 12",
+      "email": "contact@vivavia.com"
+    }
+  },
+  "destinos": {
+    "playas": {
+      "title": "Beaches",
+      "location": "Cancun, Mexico"
+    },
+    "desiertos": {
+      "title": "Deserts",
+      "location": "Atacama, Chile"
+    },
+    "montañas": {
+      "title": "Mountains",
+      "location": "Andes, Peru"
+    },
+    "ciudades": {
+      "title": "Cities",
+      "location": "Buenos Aires, Argentina"
+    },
+    "camping": {
+      "title": "Camping",
+      "location": "Bariloche, Argentina"
+    },
+    "castillos": {
+      "title": "Castles",
+      "location": "Cartagena, Colombia"
+    },
+    "tropical": {
+      "title": "Tropical",
+      "location": "San Andres, Colombia"
+    }
+  },
+  "buttons": {
+    "learn_more": "Learn more about {location}",
+    "mute": "Mute",
+    "unmute": "Unmute"
   }
 }

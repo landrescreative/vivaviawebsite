@@ -2,54 +2,52 @@
 
 import React from "react";
 import { FaStar } from "react-icons/fa";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-const ReviewsSection = () => {
-  // JSON con las reviews
-  const reviews = [
-    {
-      id: 1,
-      name: "Juan Pérez",
-      position: "Gerente de Ventas",
-      review:
-        "Increíble servicio, el equipo fue muy profesional y atento. Superaron todas nuestras expectativas.",
-      image: "/25.jpg",
+const ReviewsSection: React.FC = () => {
+  const t = useTranslations("reviewsSection");
+
+  // Cargamos las reseñas desde las traducciones
+  const reviews = t.raw("reviews");
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 },
     },
-    {
-      id: 2,
-      name: "Ana López",
-      position: "Directora de Marketing",
-      review:
-        "Trabajar con ellos fue una experiencia fantástica. La calidad del producto fue sobresaliente.",
-      image: "80.jpg",
-    },
-    {
-      id: 3,
-      name: "Carlos García",
-      position: "Jefe de Tecnología",
-      review:
-        "Excelente atención al cliente. Los recomendaría sin dudarlo para cualquier tipo de proyecto.",
-      image: "58.jpg",
-    },
-  ];
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
 
   return (
     <div className="py-8 lg:w-5/6 mx-auto">
       {/* Título y Párrafo */}
       <div className="mb-8 text-center">
-        <h2 className="text-3xl font-bold text-primary">
-          Lo que dicen nuestros clientes
-        </h2>
-        <p className="text-lg text-gray-600">
-          Estas son algunas de las opiniones de nuestros clientes sobre nuestros
-          servicios.
-        </p>
+        <h2 className="text-3xl font-bold text-primary">{t("title")}</h2>
+        <p className="text-lg text-gray-600">{t("description")}</p>
       </div>
 
-      {/* Tarjeta de reviews */}
-      <div className="bg-white rounded-3xl shadow-2xl shadow-black/20 p-2">
+      {/* Tarjetas de reviews */}
+      <motion.div
+        className="bg-white rounded-3xl shadow-2xl shadow-black/20 p-2"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
+      >
         <div className="flex flex-col lg:flex-row justify-between gap-10">
-          {reviews.map((review) => (
-            <div key={review.id} className="flex-1 p-8">
+          {reviews.map((review: any) => (
+            <motion.div
+              key={review.name}
+              className="flex-1 p-8"
+              variants={cardVariants}
+            >
               {/* Estrellas */}
               <div className="flex items-center mb-4">
                 {Array(5)
@@ -62,20 +60,24 @@ const ReviewsSection = () => {
               <p className="text-gray-600 mb-4">"{review.review}"</p>
               {/* Información del perfil */}
               <div className="flex items-center">
-                <img
+                <Image
                   src={review.image}
                   alt={`Perfil de ${review.name}`}
-                  className="w-10 h-10 rounded-full mr-4 border-2 border-primary"
+                  width={40}
+                  height={40}
+                  className="rounded-full border-2 border-primary"
+                  placeholder="blur"
+                  blurDataURL="/placeholder.jpg"
                 />
-                <div>
+                <div className="ml-4">
                   <p className="font-semibold">{review.name}</p>
                   <p className="text-sm text-gray-500">{review.position}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

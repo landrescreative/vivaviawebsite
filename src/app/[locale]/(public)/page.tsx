@@ -13,7 +13,7 @@ export default function Home() {
   const t = useTranslations();
 
   return (
-    <div className="flex flex-col">
+    <div className="">
       <Hero
         title={t("hero.title")}
         subtitle={t("hero.subtitle")}

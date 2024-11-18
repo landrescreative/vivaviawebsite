@@ -1,6 +1,9 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 const BlogSection = () => {
   const blogContent = {
@@ -15,7 +18,7 @@ const BlogSection = () => {
         description:
           "Una imagen de una maleta abierta con objetos esenciales para viajar, como una guía de viaje, adaptadores de enchufe, pasaporte, y una cámara. Alternativamente, una foto de un avión despegando o una vista aérea de una ciudad internacional podría transmitir la emoción de viajar al extranjero.",
         image: "/tarjeta blog.png",
-        alt: "Tendencias en Desarrollo Web",
+        alt: "Descubre la Magia de Tailandia",
       },
       {
         date: "07 JULIO 2024",
@@ -23,52 +26,78 @@ const BlogSection = () => {
         description:
           "Viajar no tiene que romper el banco. Aprende cómo puedes ahorrar en alojamiento, comidas y actividades sin sacrificar la calidad de tu experiencia. Con estos trucos y estrategias, podrás disfrutar de tus destinos favoritos mientras mantienes tu presupuesto bajo control.",
         image: "/tarjetablog2.png",
-        alt: "Mejorar la UX",
+        alt: "Cómo Ahorrar Dinero en Viajes",
       },
     ],
     buttonText: "Ver más",
   };
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
-    <div className="py-8 lg:w-5/6 mx-auto min-h-screen flex flex-col justify-center items-center">
+    <section className="py-8 lg:w-5/6 mx-auto min-h-screen flex flex-col justify-center items-center">
       {/* Título y Párrafo */}
-      <div className="mb-8 text-center">
+      <header className="mb-8 text-center">
         <h2 className="text-3xl font-bold text-primary">{blogContent.title}</h2>
         <p className="text-lg text-gray-600">{blogContent.description}</p>
-      </div>
+      </header>
 
       {/* Tarjetas de blog */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={{
+          visible: {
+            transition: { staggerChildren: 0.2 },
+          },
+        }}
+      >
         {blogContent.posts.map((post, index) => (
-          <div
+          <motion.article
             key={index}
             className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            variants={cardVariants}
           >
             <div className="relative w-full h-72 overflow-hidden">
-              <img
+              <Image
                 src={post.image}
                 alt={post.alt}
+                width={400}
+                height={300}
+                placeholder="blur"
+                blurDataURL="/placeholder.jpg"
                 className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110"
               />
             </div>
             <div className="p-6">
-              <div className="text-sm text-gray-500 mb-2">{post.date}</div>
+              <time className="text-sm text-gray-500 mb-2 block">
+                {post.date}
+              </time>
               <h3 className="text-xl font-bold text-gray-800 mb-4">
                 {post.title}
               </h3>
               <p className="text-gray-600">{post.description}</p>
             </div>
-          </div>
+          </motion.article>
         ))}
-      </div>
+      </motion.div>
 
       {/* Botón Ver Más */}
       <div className="mt-8 text-center">
-        <button className="bg-blue-500 text-white px-6 py-2 rounded-full text-lg font-semibold hover:bg-blue-600 transition-colors duration-300">
+        <Link
+          href="/blog"
+          className="bg-blue-500 text-white px-6 py-2 rounded-full text-lg font-semibold hover:bg-blue-600 transition-colors duration-300"
+          aria-label="Ver más publicaciones del blog"
+        >
           {blogContent.buttonText}
-        </button>
+        </Link>
       </div>
-    </div>
+    </section>
   );
 };
 

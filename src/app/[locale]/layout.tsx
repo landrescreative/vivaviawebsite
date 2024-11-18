@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "../ui/Navbar";
-import { NextIntlClientProvider } from "next-intl";
-import { useTranslations } from "next-intl";
 import Footer from "../ui/Footer";
+import { NextIntlClientProvider } from "next-intl";
 import { Montserrat } from "@next/font/google";
 
 export const metadata: Metadata = {
@@ -16,40 +15,22 @@ interface RootLayoutProps {
   params: { locale: string };
 }
 
-interface NavbarProps {
-  inicio: string;
-
-  paquetes: string;
-
-  blog: string;
-
-  nosotros: string;
-
-  contacto: string;
-
-  isesion: string;
-
-  registro: string;
-
-  soporte: string;
-
-  preguntas: string;
-}
-
 const montserrat = Montserrat({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], // todos los pesos
   subsets: ["latin"],
 });
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params: { locale },
 }: RootLayoutProps) {
-  const t = useTranslations();
+  // Importa mensajes de traducción dinámicamente según el idioma
+  const messages = (await import(`/messages/${locale}.json`)).default;
+
   return (
     <html lang={locale} className="">
       <body className={montserrat.className}>
-        <NextIntlClientProvider messages={{}}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
       </body>
