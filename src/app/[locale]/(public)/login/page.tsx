@@ -43,7 +43,7 @@ export default function Login() {
   }, [router]);
 
   // Manejo de autenticación
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
 
