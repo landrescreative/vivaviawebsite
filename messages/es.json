@@ -224,5 +224,11 @@
     "learn_more": "Ver más sobre {location}",
     "mute": "Silenciar",
     "unmute": "Activar sonido"
+  },
+  "nuestrahistoria": {
+    "nuestra_historia": "Our History",
+    "titulo": "This is How it All Began, Our History, Our Passion, Our Commitment.",
+    "descripcion": "Vivavia was born out of the passion and enthusiasm of a team of travel experts who shared a common dream: to help others discover the world authentically and meaningfully. Although we are a new agency, we are committed to offering unforgettable experiences and building lasting relationships with our clients.",
+    "reservar_ahora": "Book Now"
   }
 }

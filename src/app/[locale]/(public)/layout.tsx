@@ -4,7 +4,7 @@ import Navbar from "../../ui/Navbar";
 import { NextIntlClientProvider } from "next-intl";
 import { useTranslations } from "next-intl";
 import Footer from "../../ui/Footer";
-import { Montserrat } from "@next/font/google";
+import { Poppins } from "@next/font/google";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -36,8 +36,8 @@ interface NavbarProps {
   preguntas: string;
 }
 
-const montserrat = Montserrat({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], // todos los pesos
+const poppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], // all weights
   subsets: ["latin"],
 });
 
@@ -48,7 +48,7 @@ export default function LocaleLayout({
   const t = useTranslations();
   return (
     <html lang={locale} className="">
-      <body className={montserrat.className}>
+      <body className={poppins.className}>
         <Navbar
           inicio={t("navbar.inicio")}
           paquetes={t("navbar.paquetes")}

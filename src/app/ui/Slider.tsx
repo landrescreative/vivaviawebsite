@@ -33,7 +33,7 @@ const Slider = () => {
   return (
     <div
       ref={containerRef}
-      className="relative overflow-hidden py-8 bg-gray-100"
+      className="relative overflow-hidden py-8 "
       style={{ width: "100%" }}
     >
       <motion.div
