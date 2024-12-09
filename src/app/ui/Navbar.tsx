@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 // Icons
 import { IoIosArrowDown, IoIosCall, IoMdMenu, IoMdClose } from "react-icons/io";
@@ -165,8 +166,15 @@ const Navbar: React.FC = ({}) => {
         {/* Logo */}
         <Link
           href="/"
-          className="text-primary text-2xl flex-grow md:flex-grow-0 pl-4"
+          className="text-primary flex justify-center items-center  text-2xl flex-grow md:flex-grow-0 pl-4"
         >
+          <Image
+            src="/awdawdawdawd.png"
+            width={30}
+            height={30}
+            alt="VIVAVIA"
+            className="mr-2"
+          />
           <h1>VIVAVIA</h1>
         </Link>
 
