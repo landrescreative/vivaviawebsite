@@ -70,7 +70,7 @@ const NuestraHistoria = () => {
           {t("titulo")}
         </motion.h1>
         <motion.p
-          className="text-center mt-8 text-lg"
+          className="text-center mt-8 text-lg max-w-4xl"
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}

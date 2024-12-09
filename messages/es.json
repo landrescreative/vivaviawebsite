@@ -226,9 +226,34 @@
     "unmute": "Activar sonido"
   },
   "nuestrahistoria": {
-    "nuestra_historia": "Our History",
-    "titulo": "This is How it All Began, Our History, Our Passion, Our Commitment.",
-    "descripcion": "Vivavia was born out of the passion and enthusiasm of a team of travel experts who shared a common dream: to help others discover the world authentically and meaningfully. Although we are a new agency, we are committed to offering unforgettable experiences and building lasting relationships with our clients.",
-    "reservar_ahora": "Book Now"
+    "nuestra_historia": "Nuestra Historia",
+    "titulo": "Así es como todo comenzó, Nuestra Historia, Nuestra Pasión, Nuestro Compromiso.",
+    "descripcion": "Vivavia nació de la pasión y el entusiasmo de un equipo de expertos en viajes que compartían un sueño común: ayudar a otros a descubrir el mundo de manera auténtica y significativa. Aunque somos una agencia nueva, estamos comprometidos a ofrecer experiencias inolvidables y construir relaciones duraderas con nuestros clientes.",
+    "reservar_ahora": "Reservar Ahora"
+  },
+  "exploraMundo": {
+    "title": "Explora el mundo",
+    "with": "con",
+    "brand": "Vivavía",
+    "description": "Descubre la pasión, el compromiso y la magia que nos mueve a explorar nuevos destinos y conectar contigo.",
+    "image1": {
+      "alt": "Imagen decorativa de un paisaje"
+    },
+    "image2": {
+      "alt": "Imagen decorativa de otro paisaje"
+    }
+  },
+  "vision": {
+    "subtitle": "NUESTRA VISIÓN ---",
+    "title": "Nuestra Visión, Nuestro Compromiso, Tu Experiencia.",
+    "description": "Nuestra visión es convertirnos en la agencia de viajes líder en el mundo, ofreciendo experiencias únicas y personalizadas a cada uno de nuestros clientes. Estamos comprometidos a brindarte un servicio excepcional y a superar tus expectativas en cada viaje que hagas con nosotros.",
+    "button": "CONTÁCTANOS",
+    "imageAlt": "Imagen decorativa de Tulum"
+  },
+  "HeroSection": {
+    "title": "Servicio a",
+    "subtitle": "Cliente",
+    "description": "Estamos aquí para ayudarte. Encuentra respuestas a tus preguntas y soluciones a tus problemas de manera rápida y sencilla.",
+    "placeholder": "Buscar..."
   }
 }

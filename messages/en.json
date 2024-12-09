@@ -230,5 +230,30 @@
     "titulo": "This is How it All Began, Our History, Our Passion, Our Commitment.",
     "descripcion": "Vivavia was born out of the passion and enthusiasm of a team of travel experts who shared a common dream: to help others discover the world authentically and meaningfully. Although we are a new agency, we are committed to offering unforgettable experiences and building lasting relationships with our clients.",
     "reservar_ahora": "Book Now"
+  },
+  "exploraMundo": {
+    "title": "Explore the world",
+    "with": "with",
+    "brand": "Vivavía",
+    "description": "Discover the passion, commitment, and magic that drive us to explore new destinations and connect with you.",
+    "image1": {
+      "alt": "Decorative image of a landscape"
+    },
+    "image2": {
+      "alt": "Decorative image of another landscape"
+    }
+  },
+  "vision": {
+    "subtitle": "OUR VISION ---",
+    "title": "Our Vision, Our Commitment, Your Experience.",
+    "description": "Our vision is to become the world's leading travel agency, offering unique and personalized experiences to each of our clients. We are committed to providing you with exceptional service and exceeding your expectations on every trip you take with us.",
+    "button": "CONTACT US",
+    "imageAlt": "Decorative image of Tulum"
+  },
+  "HeroSection": {
+    "title": "Customer",
+    "subtitle": "Service",
+    "description": "We are here to help you. Find answers to your questions and solutions to your problems quickly and easily.",
+    "placeholder": "Search..."
   }
 }
