@@ -106,7 +106,7 @@
       {
         "title": "Access to Exclusive Offers",
         "text": "With Vivavía, you have access to promotions and offers that you won't find anywhere else. We work directly with trusted providers to ensure you get the best value for your money.",
-        "img": "group68.png"
+        "img": "Group68.png"
       }
     ]
   },
@@ -265,17 +265,17 @@
       {
         "title": "Why choose us?",
         "description": "We offer reliable and personalized solutions.",
-        "redirectUrl": "/about"
+        "redirectUrl": "/nosotros"
       },
       {
         "title": "User guides",
         "description": "Explore our quick guides to learn more.",
-        "redirectUrl": "/guides"
+        "redirectUrl": "/blog"
       },
       {
         "title": "Professional attention",
         "description": "We are here to help you every step of the way.",
-        "redirectUrl": "/#formulario"
+        "redirectUrl": "/contacto/#formulario"
       },
       {
         "title": "How to buy your first tour trip",

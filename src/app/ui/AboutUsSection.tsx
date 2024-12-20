@@ -109,7 +109,6 @@ const ProgresoScroll: React.FC = () => {
 
   return (
     <div className="relative p-4 lg:p-10">
-      {/* Barra de progreso continua */}
       <div
         className="absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-300 hidden lg:block"
         role="progressbar"

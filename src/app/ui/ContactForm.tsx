@@ -56,7 +56,10 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-blue-100 p-6">
+    <div
+      id="formulario"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-blue-100 p-6"
+    >
       <div className="w-full max-w-7xl bg-white shadow-2xl rounded-xl overflow-hidden flex flex-col md:flex-row">
         {/* Sección de Imagen */}
         <div className="flex-1 bg-gradient-to-br from-blue-500 to-indigo-600 relative">
