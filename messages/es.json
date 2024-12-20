@@ -255,5 +255,134 @@
     "subtitle": "Cliente",
     "description": "Estamos aquí para ayudarte. Encuentra respuestas a tus preguntas y soluciones a tus problemas de manera rápida y sencilla.",
     "placeholder": "Buscar..."
+  },
+  "contactPage": {
+    "heroSection": {
+      "title": "Guias rápidas",
+      "subtitle": "Encuentra respuestas a tus preguntas y soluciones a tus problemas de manera rápida y sencilla."
+    },
+    "guides": [
+      {
+        "title": "¿Por qué elegirnos?",
+        "description": "Ofrecemos soluciones confiables y personalizadas.",
+        "redirectUrl": "/about"
+      },
+      {
+        "title": "Guías de usuario",
+        "description": "Explora nuestras guías rápidas para aprender más.",
+        "redirectUrl": "/guides"
+      },
+      {
+        "title": "Atención profesional",
+        "description": "Estamos aquí para ayudarte en cada paso.",
+        "redirectUrl": "/#formulario"
+      },
+      {
+        "title": "Como comprar tu primer viaje turístico",
+        "description": "¿Planeas tu primer viaje turístico y no sabes por dónde empezar? Esta guía completa te llevará de la mano desde la planificación hasta el regreso.",
+        "redirectUrl": "/blog/2"
+      },
+      {
+        "title": "Consejos esenciales para viajeros inexpertos",
+        "description": "¿Eres nuevo en el mundo de los viajes? Descubre consejos esenciales para disfrutar al máximo de tu aventura.",
+        "redirectUrl": "/blog/3"
+      },
+      {
+        "title": "Cómo viajar con mascotas de forma segura y cómoda",
+        "description": "Descubre cómo viajar con tus mascotas de forma segura y garantizar su bienestar en cada etapa del trayecto.",
+        "redirectUrl": "/blog/4"
+      }
+    ],
+    "faq": {
+      "title": "Preguntas Frecuentes"
+    },
+    "contactForm": {
+      "title": "Contáctanos"
+    }
+  },
+  "quickGuideCard": {
+    "buttonText": "VER MÁS"
+  },
+  "faq": {
+    "title": "Preguntas",
+    "highlight": "Frecuentes",
+    "items": [
+      {
+        "question": "¿Qué tipos de paquetes de viaje ofrecen?",
+        "answer": "Ofrecemos paquetes de aventura, relajación, viajes en familia, lunas de miel, y escapadas personalizadas para que disfrutes al máximo."
+      },
+      {
+        "question": "¿Puedo personalizar mi itinerario?",
+        "answer": "¡Claro que sí! Nuestros itinerarios son completamente personalizables para adaptarse a tus gustos y necesidades."
+      },
+      {
+        "question": "¿Qué incluye un paquete de viaje típico?",
+        "answer": "Un paquete típico incluye vuelos, alojamiento, traslados, actividades guiadas, y en algunos casos, comidas. Contáctanos para personalizarlo."
+      },
+      {
+        "question": "¿Qué documentos necesito para viajar al extranjero?",
+        "answer": "Para viajar al extranjero necesitarás pasaporte, visado y otras documentaciones específicas según el destino. Te ayudamos a prepararlos."
+      },
+      {
+        "question": "¿Qué debo hacer si necesito cancelar mi viaje?",
+        "answer": "Contáctanos lo antes posible. Gestionaremos la cancelación y te guiaremos según las políticas del paquete contratado."
+      }
+    ]
+  },
+  "contactForm": {
+    "imageSection": {
+      "title": "Planea tu Próxima Aventura",
+      "subtitle": "¿Sueñas con viajar? Contáctanos para planificar tu próxima experiencia inolvidable. ¡Explora el mundo con nosotros!"
+    },
+    "formSection": {
+      "title": "Contáctanos",
+      "submitButton": "Enviar"
+    },
+    "formFields": {
+      "name": {
+        "label": "Nombre Completo",
+        "placeholder": "Tu nombre completo",
+        "error": "Por favor, ingresa tu nombre."
+      },
+      "subject": {
+        "label": "Asunto",
+        "placeholder": "Motivo de tu consulta",
+        "error": "Por favor, ingresa el motivo de tu consulta."
+      },
+      "email": {
+        "label": "Correo Electrónico",
+        "placeholder": "Tu correo electrónico",
+        "error": "Por favor, ingresa un correo válido."
+      },
+      "message": {
+        "label": "Mensaje",
+        "placeholder": "Describe cómo podemos ayudarte...",
+        "error": "Por favor, ingresa tu mensaje."
+      }
+    },
+    "successMessage": "Gracias por contactarnos. Responderemos pronto."
+  },
+  "blogPage": {
+    "header": {
+      "title": "Blogs y artículos",
+      "subtitle": "Encuentra los mejores artículos y blogs de viajes",
+      "banner": "Blogs"
+    },
+    "filters": {
+      "title": "Últimos Artículos",
+      "subtitle": "Descubre nuestros últimos artículos sobre viajes, consejos y destinos recomendados.",
+      "searchPlaceholder": "Buscar"
+    },
+    "categories": {
+      "all": "Todos"
+    },
+    "noResultsMessage": "No se encontraron artículos que coincidan con la búsqueda o categoría seleccionada."
+  },
+  "blogSection": {
+    "title": "Revisa nuestro Blog",
+    "description": "Visita nuestro blog para obtener consejos útiles, guías de viaje y todo lo que necesitas para planificar tu próxima aventura.",
+    "buttonText": "Ver más",
+    "buttonAriaLabel": "Ver más publicaciones del blog",
+    "readMore": "Leer más"
   }
 }

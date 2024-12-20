@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaFlag } from "react-icons/fa";
 import Link from "next/link"; // Importar Link de Next.js
+import { useTranslations } from "next-intl";
 
 interface QuickGuideCardProps {
   title: string;
@@ -14,6 +15,8 @@ const QuickGuideCard: React.FC<QuickGuideCardProps> = ({
   description,
   redirectUrl,
 }) => {
+  const t = useTranslations("quickGuideCard"); // Carga las traducciones específicas
+
   // Variants de animación
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -45,7 +48,7 @@ const QuickGuideCard: React.FC<QuickGuideCardProps> = ({
         href={redirectUrl}
         passHref
       >
-        VER MÁS
+        {t("buttonText")}
       </Link>
 
       {/* Decoración en la Esquina */}

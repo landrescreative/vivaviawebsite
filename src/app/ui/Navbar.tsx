@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-// Icons
 import { IoIosArrowDown, IoIosCall, IoMdMenu, IoMdClose } from "react-icons/io";
 import { FaDollarSign } from "react-icons/fa6";
 import { GrLanguage } from "react-icons/gr";
@@ -19,20 +18,17 @@ const Navbar: React.FC = ({}) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
-  // Refs para los dropdowns
   const currencyDropdownRef = useRef<HTMLDivElement>(null);
   const languageDropdownRef = useRef<HTMLDivElement>(null);
   const profileDropdownRef = useRef<HTMLDivElement>(null);
 
   const router = useRouter();
 
-  // Verificar autenticación al cargar la barra de navegación
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     setIsAuthenticated(isLoggedIn === "true");
   }, []);
 
-  // Maneja clics fuera del dropdown
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -62,12 +58,10 @@ const Navbar: React.FC = ({}) => {
     };
   }, []);
 
-  // Bloquear scrolll en mobile
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
   }, [isMobileMenuOpen]);
 
-  // Función para cerrar sesión
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     setIsAuthenticated(false);
@@ -78,15 +72,17 @@ const Navbar: React.FC = ({}) => {
 
   return (
     <div className="w-full fixed z-50 top-0 text-black">
-      {/* Barra superior con dropdowns */}
       <div className="py-1 justify-evenly items-center bg-primary text-white hidden md:flex">
         <h1 className="flex justify-center items-center gap-1">
           <IoIosCall /> 800 55592283
         </h1>
-        <h1 className="">{t("navbar.soporte")}</h1>
-        <h1 className="">{t("navbar.preguntas")}</h1>
+        <Link href="/contacto" className="hover:underline">
+          <h1 className="">{t("navbar.soporte")}</h1>
+        </Link>
+        <Link href="/contacto/#faq" className="hover:underline">
+          <h1 className="">{t("navbar.preguntas")}</h1>
+        </Link>
 
-        {/* Dropdown para MXN */}
         <div className="relative" ref={currencyDropdownRef}>
           <button
             onClick={() => setShowCurrencyDropdown(!showCurrencyDropdown)}
@@ -120,7 +116,6 @@ const Navbar: React.FC = ({}) => {
           </motion.div>
         </div>
 
-        {/* Dropdown para Idioma */}
         <div className="relative" ref={languageDropdownRef}>
           <button
             onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
@@ -161,20 +156,12 @@ const Navbar: React.FC = ({}) => {
         </div>
       </div>
 
-      {/* Barra principal de navegación */}
       <div className="flex w-full py-3 justify-evenly items-center bg-white">
         {/* Logo */}
         <Link
           href="/"
           className="text-primary flex justify-center items-center  text-2xl flex-grow md:flex-grow-0 pl-4"
         >
-          <Image
-            src="/awdawdawdawd.png"
-            width={30}
-            height={30}
-            alt="VIVAVIA"
-            className="mr-2"
-          />
           <h1>VIVAVIA</h1>
         </Link>
 
@@ -187,7 +174,6 @@ const Navbar: React.FC = ({}) => {
           </button>
         </div>
 
-        {/* Links de navegación */}
         <div className="flex justify-around gap-5 text-gray-500">
           <Link href="/" className="text-primary uppercase hidden md:block">
             {t("navbar.inicio")}
@@ -198,12 +184,7 @@ const Navbar: React.FC = ({}) => {
           >
             {t("navbar.paquetes")}
           </Link>
-          <Link
-            href="/blog"
-            className="hover:text-primary uppercase transition-colors duration-300 hidden md:block"
-          >
-            {t("navbar.blog")}
-          </Link>
+
           <Link
             href="/nosotros"
             className="hover:text-primary uppercase transition-colors duration-300 hidden md:block"
@@ -216,9 +197,14 @@ const Navbar: React.FC = ({}) => {
           >
             {t("navbar.contacto")}
           </Link>
+          <Link
+            href="/blog"
+            className="hover:text-primary uppercase transition-colors duration-300 hidden md:block"
+          >
+            {t("navbar.blog")}
+          </Link>
         </div>
 
-        {/* Icono de perfil o botones de sesión */}
         {isAuthenticated ? (
           <div className="relative" ref={profileDropdownRef}>
             <button
@@ -268,7 +254,6 @@ const Navbar: React.FC = ({}) => {
         )}
       </div>
 
-      {/* Menú en Mobile */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -290,18 +275,18 @@ const Navbar: React.FC = ({}) => {
               <Link href="/destinos" onClick={() => setIsMobileMenuOpen(false)}>
                 {t("navbar.paquetes")}
               </Link>
-              <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)}>
-                {t("navbar.blog")}
-              </Link>
+
               <Link href="/nosotros" onClick={() => setIsMobileMenuOpen(false)}>
                 {t("navbar.nosotros")}
               </Link>
               <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>
                 {t("navbar.contacto")}
               </Link>
+              <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)}>
+                {t("navbar.blog")}
+              </Link>
             </motion.div>
 
-            {/* Botones de sesión o perfil en el menú móvil */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Slider = () => {
   // Lista de imágenes base
@@ -46,11 +47,13 @@ const Slider = () => {
         }}
       >
         {repeatedBrands.map((brand, index) => (
-          <img
+          <Image
             key={index}
             src={brand}
             alt={`Brand ${index}`}
-            className="w-60 object-contain mx-4"
+            width={240}
+            height={240}
+            className="object-contain mx-4"
           />
         ))}
       </motion.div>

@@ -255,5 +255,134 @@
     "subtitle": "Service",
     "description": "We are here to help you. Find answers to your questions and solutions to your problems quickly and easily.",
     "placeholder": "Search..."
+  },
+  "contactPage": {
+    "heroSection": {
+      "title": "Quick Guides",
+      "subtitle": "Find answers to your questions and solutions to your problems quickly and easily."
+    },
+    "guides": [
+      {
+        "title": "Why choose us?",
+        "description": "We offer reliable and personalized solutions.",
+        "redirectUrl": "/about"
+      },
+      {
+        "title": "User guides",
+        "description": "Explore our quick guides to learn more.",
+        "redirectUrl": "/guides"
+      },
+      {
+        "title": "Professional attention",
+        "description": "We are here to help you every step of the way.",
+        "redirectUrl": "/#formulario"
+      },
+      {
+        "title": "How to buy your first tour trip",
+        "description": "Planning your first tour trip and don't know where to start? This complete guide will walk you through from planning to return.",
+        "redirectUrl": "/blog/2"
+      },
+      {
+        "title": "Essential tips for inexperienced travelers",
+        "description": "New to traveling? Discover essential tips to make the most of your adventure.",
+        "redirectUrl": "/blog/3"
+      },
+      {
+        "title": "How to travel with pets safely and comfortably",
+        "description": "Learn how to travel with your pets safely and ensure their well-being every step of the way.",
+        "redirectUrl": "/blog/4"
+      }
+    ],
+    "faq": {
+      "title": "Frequently Asked Questions"
+    },
+    "contactForm": {
+      "title": "Contact Us"
+    }
+  },
+  "quickGuideCard": {
+    "buttonText": "SEE MORE"
+  },
+  "faq": {
+    "title": "Frequently",
+    "highlight": "Asked Questions",
+    "items": [
+      {
+        "question": "What types of travel packages do you offer?",
+        "answer": "We offer adventure packages, relaxation trips, family vacations, honeymoons, and customized getaways to maximize your experience."
+      },
+      {
+        "question": "Can I customize my itinerary?",
+        "answer": "Of course! Our itineraries are fully customizable to suit your preferences and needs."
+      },
+      {
+        "question": "What does a typical travel package include?",
+        "answer": "A typical package includes flights, accommodation, transfers, guided activities, and sometimes meals. Contact us to personalize it."
+      },
+      {
+        "question": "What documents do I need to travel abroad?",
+        "answer": "To travel abroad, you'll need a passport, visa, and other destination-specific documentation. We'll help you prepare them."
+      },
+      {
+        "question": "What should I do if I need to cancel my trip?",
+        "answer": "Contact us as soon as possible. We'll manage the cancellation and guide you according to the package's policies."
+      }
+    ]
+  },
+  "contactForm": {
+    "imageSection": {
+      "title": "Plan Your Next Adventure",
+      "subtitle": "Dreaming of traveling? Contact us to plan your next unforgettable experience. Explore the world with us!"
+    },
+    "formSection": {
+      "title": "Contact Us",
+      "submitButton": "Send"
+    },
+    "formFields": {
+      "name": {
+        "label": "Full Name",
+        "placeholder": "Your full name",
+        "error": "Please enter your name."
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "Reason for your inquiry",
+        "error": "Please enter the reason for your inquiry."
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Your email address",
+        "error": "Please enter a valid email address."
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Describe how we can help you...",
+        "error": "Please enter your message."
+      }
+    },
+    "successMessage": "Thank you for contacting us. We will respond soon."
+  },
+  "blogPage": {
+    "header": {
+      "title": "Blogs and Articles",
+      "subtitle": "Find the best travel articles and blogs",
+      "banner": "Blogs"
+    },
+    "filters": {
+      "title": "Latest Articles",
+      "subtitle": "Discover our latest articles on travel, tips, and recommended destinations.",
+      "searchPlaceholder": "Search"
+    },
+    "categories": {
+      "all": "All"
+    },
+    "noResultsMessage": "No articles were found matching the search or selected category."
+  },
+  "blogSection": {
+    "title": "Check out our Blog",
+    "description": "Visit our blog to get helpful tips, travel guides, and everything you need to plan your next adventure.",
+    "buttonText": "See more",
+    "buttonAriaLabel": "See more blog posts",
+    "readMore": "Read more"
   }
 }

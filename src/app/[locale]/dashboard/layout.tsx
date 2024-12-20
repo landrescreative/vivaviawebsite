@@ -1,6 +1,6 @@
 // app/[locale]/dashboard/layout.tsx
 "use client";
-
+import "../globals.css";
 import { usePathname } from "next/navigation";
 import TopBar from "@/app/ui/TopBar";
 import Sidebar from "@/app/ui/Sidebar";

@@ -8,8 +8,6 @@ import { useTranslations } from "next-intl";
 
 const ReviewsSection: React.FC = () => {
   const t = useTranslations("reviewsSection");
-
-  // Cargamos las reseñas desde las traducciones
   const reviews = t.raw("reviews");
 
   const containerVariants = {
@@ -26,29 +24,26 @@ const ReviewsSection: React.FC = () => {
   };
 
   return (
-    <div className="py-8 lg:w-5/6 mx-auto">
-      {/* Título y Párrafo */}
-      <div className="mb-8 text-center">
-        <h2 className="text-3xl font-bold text-primary">{t("title")}</h2>
-        <p className="text-lg text-gray-600">{t("description")}</p>
+    <div className="py-12 lg:w-5/6 mx-auto">
+      <div className="mb-12 text-center">
+        <h2 className="text-4xl font-bold text-primary">{t("title")}</h2>
+        <p className="text-lg text-gray-600 mt-1">{t("description")}</p>
       </div>
 
-      {/* Tarjetas de reviews */}
       <motion.div
-        className="bg-white rounded-3xl shadow-2xl shadow-black/20 p-2"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={containerVariants}
       >
-        <div className="flex flex-col lg:flex-row justify-between gap-10">
-          {reviews.map((review: any) => (
-            <motion.div
-              key={review.name}
-              className="flex-1 p-8"
-              variants={cardVariants}
-            >
-              {/* Estrellas */}
+        {reviews.map((review: any) => (
+          <motion.div
+            key={review.name}
+            className="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-2 border border-gray-200"
+            variants={cardVariants}
+          >
+            <div className="p-6">
               <div className="flex items-center mb-4">
                 {Array(5)
                   .fill(0)
@@ -56,27 +51,27 @@ const ReviewsSection: React.FC = () => {
                     <FaStar key={i} className="text-yellow-400" />
                   ))}
               </div>
-              {/* Texto de la review */}
-              <p className="text-gray-600 mb-4">"{review.review}"</p>
-              {/* Información del perfil */}
+              <p className="text-gray-700 italic mb-6 line-clamp-4">
+                "{review.review}"
+              </p>
               <div className="flex items-center">
                 <Image
                   src={review.image}
                   alt={`Perfil de ${review.name}`}
-                  width={40}
-                  height={40}
+                  width={50}
+                  height={50}
                   className="rounded-full border-2 border-primary"
                   placeholder="blur"
                   blurDataURL="/placeholder.jpg"
                 />
                 <div className="ml-4">
-                  <p className="font-semibold">{review.name}</p>
+                  <p className="font-bold text-gray-800">{review.name}</p>
                   <p className="text-sm text-gray-500">{review.position}</p>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </motion.div>
+        ))}
       </motion.div>
     </div>
   );
