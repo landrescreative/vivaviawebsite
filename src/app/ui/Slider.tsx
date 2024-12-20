@@ -4,13 +4,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const Slider = () => {
-  // Lista de imágenes base
   const brands = [
-    "/aeromexico.png",
-    "/volaris-logo.svg",
-    "/aeromexico.png",
-    "/volaris-logo.svg",
-    "/aeromexico.png",
+    "/Aeromexico.png",
+    "/Volaris-logo.svg",
+    "/Aeromexico.png",
+    "/Volaris-logo.svg",
+    "/Aeromexico.png",
   ];
 
   const [repeatedBrands, setRepeatedBrands] = useState([...brands, ...brands]); // Duplicamos desde el inicio para asegurar continuidad
