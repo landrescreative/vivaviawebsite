@@ -2,8 +2,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
+import { useLocale } from "next-intl";
 
 import { IoIosArrowDown, IoIosCall, IoMdMenu, IoMdClose } from "react-icons/io";
 import { FaDollarSign } from "react-icons/fa6";
@@ -23,6 +24,18 @@ const Navbar: React.FC = ({}) => {
   const profileDropdownRef = useRef<HTMLDivElement>(null);
 
   const router = useRouter();
+  const pathname = usePathname(); // Get current page path
+  const currentLocale = useLocale(); // Get current locale
+
+  const changeLanguage = (newLocale: string) => {
+    if (newLocale !== currentLocale) {
+      const pathWithoutLocale = pathname.replace(/^\/(en|es)/, "");
+      const newPath = `/${newLocale}${pathWithoutLocale}`;
+
+      router.push(newPath);
+      router.refresh(); // Ensures Next.js reloads the page completely
+    }
+  };
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -137,20 +150,18 @@ const Navbar: React.FC = ({}) => {
             }`}
           >
             <ul className="text-black">
-              <Link
-                href="/es"
-                locale="es"
+              <li
+                onClick={() => changeLanguage("es")}
                 className="flex justify-center items-center gap-1 px-4 py-2 hover:bg-gray-200 cursor-pointer"
               >
                 <img src="/Flag_of_Mexico.png" className="w-5 h-full" /> ESPAÑOL
-              </Link>
-              <Link
-                href="/en"
-                locale="en"
+              </li>
+              <li
+                onClick={() => changeLanguage("en")}
                 className="flex justify-center items-center gap-1 px-4 py-2 hover:bg-gray-200 cursor-pointer"
               >
                 <img src="/flagusa.webp" className="w-5 h-full" /> ENGLISH
-              </Link>
+              </li>
             </ul>
           </motion.div>
         </div>

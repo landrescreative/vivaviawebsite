@@ -2,6 +2,7 @@ import Image from "next/image";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 const VisionSeccion = () => {
   const t = useTranslations("vision");
@@ -89,14 +90,16 @@ const VisionSeccion = () => {
             className="flex justify-center md:justify-start"
             variants={childVariants}
           >
-            <motion.button
+            <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               className="bg-primary flex items-center text-white px-6 py-2 mt-6 rounded-full shadow hover:bg-primary/90 transition duration-300"
             >
-              {t("button")}
-              <MdKeyboardDoubleArrowRight size={20} className="ml-2" />
-            </motion.button>
+              <Link href="/contacto" passHref className="flex items-center">
+                {t("button")}
+                <MdKeyboardDoubleArrowRight size={20} className="ml-2" />
+              </Link>
+            </motion.div>
           </motion.div>
         </motion.div>
       </motion.div>

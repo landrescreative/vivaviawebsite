@@ -30,6 +30,7 @@ const FAQItem = ({ question, answer }) => {
 
   return (
     <div
+      id="faq"
       className={`p-6 rounded-lg shadow-md bg-white transition-all ${
         isOpen ? "ring-2 ring-blue-500" : "ring-1 ring-gray-200"
       }`}

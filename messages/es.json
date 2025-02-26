@@ -106,7 +106,7 @@
       {
         "title": "Acceso a Ofertas Exclusivas",
         "text": "Con Vivavía, tienes acceso a promociones y ofertas que no encontrarás en ningún otro lugar. Trabajamos directamente con proveedores de confianza para garantizar que obtengas el mejor valor por tu dinero.",
-        "img": "group68.png"
+        "img": "Group68.png"
       }
     ]
   },
@@ -265,17 +265,17 @@
       {
         "title": "¿Por qué elegirnos?",
         "description": "Ofrecemos soluciones confiables y personalizadas.",
-        "redirectUrl": "/about"
+        "redirectUrl": "/nosotros"
       },
       {
         "title": "Guías de usuario",
         "description": "Explora nuestras guías rápidas para aprender más.",
-        "redirectUrl": "/guides"
+        "redirectUrl": "/blog"
       },
       {
         "title": "Atención profesional",
         "description": "Estamos aquí para ayudarte en cada paso.",
-        "redirectUrl": "/#formulario"
+        "redirectUrl": "/contacto/#formulario"
       },
       {
         "title": "Como comprar tu primer viaje turístico",
